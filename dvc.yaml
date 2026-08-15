@@ -1,0 +1,60 @@
+stages:
+  prepare:
+    cmd: python scripts/make_dataset.py
+    deps:
+      - data/raw/images
+      - src/data/make_dataset.py
+      - config/config.yaml
+    params:
+      - prepare.train_split
+      - prepare.val_split
+      - prepare.test_split
+      - prepare.seed
+    outs:
+      - data/processed/train
+      - data/processed/val
+      - data/processed/test
+
+  # NOTE: train/evaluate outs below are all `cache: false` — DVC still
+  # orchestrates the pipeline (knows when to re-run based on changed deps)
+  # but does not cache or version these files. MLflow owns experiment
+  # tracking and model versioning (see src/models/train.py); DVC's job here
+  # is data versioning only (data/raw/images.dvc, data/processed/* above).
+  train:
+    cmd: python scripts/train.py
+    deps:
+      - data/processed/train
+      - data/processed/val
+      - src/models/train.py
+      - src/models/model.py
+      - src/data/preprocess.py
+      - config/config.yaml
+    params:
+      - train.image_size
+      - train.channels
+      - train.batch_size
+      - train.epochs
+      - train.learning_rate
+      - train.early_stopping_patience
+      - train.seed
+    outs:
+      # NOTE: filename follows config.yaml's model_name (default plant_disease_model) —
+      # keep the two in sync if you rename it there.
+      - models/plant_disease_model.keras:
+          cache: false
+
+  evaluate:
+    cmd: python scripts/evaluate.py
+    deps:
+      - data/processed/test
+      - models/plant_disease_model.keras
+      - src/models/evaluate.py
+    outs:
+      - reports/evaluation.txt:
+          cache: false
+      - reports/figures/confusion_matrix.png:
+          cache: false
+      - reports/figures/sample_predictions.png:
+          cache: false
+      - reports/figures/training_curve.png:
+          cache: false

@@ -1,0 +1,124 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python scripts/make_dataset.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 1ea455c9c58431558459d370c3576453
+      size: 1885
+    - path: data/raw/images
+      hash: md5
+      md5: fe176bed0c0c37b250ebaa49a125d8fc.dir
+      size: 342230723
+      nfiles: 20639
+    - path: src/data/make_dataset.py
+      hash: md5
+      md5: 6d6584aefc2bc9c11c37404b5d60f505
+      size: 3322
+    params:
+      params.yaml:
+        prepare.seed: 123
+        prepare.test_split: 0.1
+        prepare.train_split: 0.8
+        prepare.val_split: 0.1
+    outs:
+    - path: data/processed/test
+      hash: md5
+      md5: 1130c951c513dd06d8e2810d4334e647.dir
+      size: 34727244
+      nfiles: 2076
+    - path: data/processed/train
+      hash: md5
+      md5: 45612d7f154cd8acc1a49c9c7e6cf857.dir
+      size: 273250035
+      nfiles: 16505
+    - path: data/processed/val
+      hash: md5
+      md5: a38690b34d1856d53288efba45899b7a.dir
+      size: 34253444
+      nfiles: 2058
+  train:
+    cmd: python scripts/train.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 1ea455c9c58431558459d370c3576453
+      size: 1885
+    - path: data/processed/train
+      hash: md5
+      md5: 45612d7f154cd8acc1a49c9c7e6cf857.dir
+      size: 273250035
+      nfiles: 16505
+    - path: data/processed/val
+      hash: md5
+      md5: a38690b34d1856d53288efba45899b7a.dir
+      size: 34253444
+      nfiles: 2058
+    - path: src/data/preprocess.py
+      hash: md5
+      md5: f21d90cbe6ea2d877535362e094d5097
+      size: 2141
+    - path: src/models/model.py
+      hash: md5
+      md5: 1fa5f5615f6b16336e6ad7666f809229
+      size: 1507
+    - path: src/models/train.py
+      hash: md5
+      md5: c784f5cb2b7783d482e301a14f7646d0
+      size: 6003
+    params:
+      params.yaml:
+        train.batch_size: 32
+        train.channels: 3
+        train.early_stopping_patience: 8
+        train.epochs: 50
+        train.image_size: 256
+        train.learning_rate: 0.001
+        train.seed: 123
+    outs:
+    - path: models/checkpoints/best.keras
+      hash: md5
+      md5: ea2cbd38c23d10dd3da7a62a85d3c0c6
+      size: 2298212
+    - path: models/plant_disease_model.keras
+      hash: md5
+      md5: 21e6e612d369720bf14aa0fe1aa415ac
+      size: 2298212
+    - path: reports/metrics.json
+      hash: md5
+      md5: 604a924fe2dac3d5b196b3ca8b126c78
+      size: 100
+  evaluate:
+    cmd: python scripts/evaluate.py
+    deps:
+    - path: data/processed/test
+      hash: md5
+      md5: 1130c951c513dd06d8e2810d4334e647.dir
+      size: 34727244
+      nfiles: 2076
+    - path: models/plant_disease_model.keras
+      hash: md5
+      md5: 21e6e612d369720bf14aa0fe1aa415ac
+      size: 2298212
+    - path: src/models/evaluate.py
+      hash: md5
+      md5: b533d1079f34f15fdc3459a0e8ded8da
+      size: 4989
+    outs:
+    - path: reports/evaluation.txt
+      hash: md5
+      md5: c09c7b12c04f3b5558f6446bfb867778
+      size: 1638
+    - path: reports/figures/confusion_matrix.png
+      hash: md5
+      md5: c14f5f4f49f77da5d637f2e1a2b6ebab
+      size: 161170
+    - path: reports/figures/sample_predictions.png
+      hash: md5
+      md5: 19f02166586a8b9e84a5a8479cbf8b18
+      size: 3890486
+    - path: reports/figures/training_curve.png
+      hash: md5
+      md5: 3b9f48f8cb52a7bec2dc963d2b6a6b6b
+      size: 85004

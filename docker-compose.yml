@@ -1,0 +1,51 @@
+name: plant-disease-detection
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: plant-disease-api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      - MLFLOW_TRACKING_URI=http://mlflow:5000
+    depends_on:
+      - mlflow
+    restart: unless-stopped
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.19.0
+    container_name: plant-disease-mlflow
+    ports:
+      - "5000:5000"
+    command: >
+      mlflow server
+      --host 0.0.0.0
+      --port 5000
+      --backend-store-uri sqlite:///mlflow/mlflow.db
+      --default-artifact-root /mlflow/artifacts
+    volumes:
+      - mlflow-data:/mlflow
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: app/Dockerfile
+    container_name: plant-disease-frontend
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://api:8000
+    depends_on:
+      - api
+    restart: unless-stopped
+
+volumes:
+  mlflow-data:
+    # Pinned to the volume created under the old "potato-disease" project name
+    # so the project rename doesn't orphan MLflow's tracking history/models.
+    name: potato-disease_mlflow-data

@@ -1,0 +1,6 @@
+# Extra dependencies for training/evaluation only — not needed by the
+# serving image (see Dockerfile, which installs requirements.txt alone).
+-r requirements.txt
+matplotlib==3.10.9
+scikit-learn==1.7.2
+dvc==3.67.1

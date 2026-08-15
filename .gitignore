@@ -1,3 +1,60 @@
-venv/
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Environment
+.env
+venv/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Models — versioned via MLflow's Model Registry, not git/DVC (see
+# src/models/train.py).
+*.tflite
+*.keras
+*.h5
+models/.mlflow_run_id
+
+# Data — DVC-tracked (data/raw/images has its own .gitignore from `dvc add`;
+# data/processed is a `prepare` stage output managed by dvc.yaml/dvc.lock)
+data/processed/*/
+
+# MLflow
+mlruns/
+mlflow.db
+
+# Logs
+logs/
+
+# Generated evaluation/training artifacts (regenerate via `make train`/`make
+# evaluate` or `dvc repro`) — MLflow is the system of record for these, not
+# git or DVC.
+reports/figures/*.png
+reports/evaluation.txt
+reports/training_history.json
+reports/metrics.json
+
+# Testing & Coverage
+.pytest_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# Node / Mobile
+node_modules/
+.expo/
+
+# OS
+.DS_Store
+Thumbs.db
