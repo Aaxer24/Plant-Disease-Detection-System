@@ -44,8 +44,24 @@ services:
       - api
     restart: unless-stopped
 
+  caddy:
+    image: caddy:2-alpine
+    container_name: plant-disease-caddy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - frontend
+    restart: unless-stopped
+
 volumes:
   mlflow-data:
     # Pinned to the volume created under the old "potato-disease" project name
     # so the project rename doesn't orphan MLflow's tracking history/models.
     name: potato-disease_mlflow-data
+  caddy-data:
+  caddy-config:
