@@ -268,8 +268,9 @@ with st.sidebar:
     st.markdown("### System Status")
     health = check_health()
     if health and health.get("model_loaded"):
+        version = health.get("version", "?")
         st.markdown(
-            f'<span class="status-pill status-online">● API online · v{health.get("version", "?")}</span>',
+            f'<span class="status-pill status-online">● API online · v{version}</span>',
             unsafe_allow_html=True,
         )
     elif health:
@@ -344,7 +345,8 @@ with tab_detect:
                         <div class="confidence-badge">{confidence:.1f}%</div>
                     </div>
                     <div style="margin-top:0.75rem;">
-                        <span class="severity-badge" style="color:{sev_color}; background:{sev_bg};">
+                        <span class="severity-badge"
+                              style="color:{sev_color}; background:{sev_bg};">
                             Severity: {sev_text}
                         </span>
                     </div>
@@ -371,7 +373,9 @@ with tab_detect:
                     st.markdown(
                         "<ul class='info-list'>"
                         + "".join(
-                            f"<li><b>{p['name']}</b> <span style='color:{MUTED};'>({p['type']})</span> — {p['usage']}</li>"
+                            f"<li><b>{p['name']}</b> "
+                            f"<span style='color:{MUTED};'>({p['type']})</span> "
+                            f"— {p['usage']}</li>"
                             for p in pesticides
                         )
                         + "</ul>",
@@ -381,7 +385,8 @@ with tab_detect:
 with tab_chat:
     if st.session_state.prediction:
         st.markdown(
-            f'<div class="card" style="margin-bottom:1rem;">💬 Chatting with context from your last scan: '
+            '<div class="card" style="margin-bottom:1rem;">'
+            "💬 Chatting with context from your last scan: "
             f"<b>{st.session_state.prediction['display_name']}</b></div>",
             unsafe_allow_html=True,
         )

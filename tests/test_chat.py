@@ -48,9 +48,7 @@ def test_chat_empty_message(client):
 
 def test_chat_stream(client):
     """POST /chat/stream returns the reply incrementally as chunked text."""
-    with client.stream(
-        "POST", "/chat/stream", json={"message": "What is early blight?"}
-    ) as r:
+    with client.stream("POST", "/chat/stream", json={"message": "What is early blight?"}) as r:
         assert r.status_code == 200
         body = "".join(r.iter_text())
     assert body == "Your potato plant looks healthy! Keep it up 🌱"
