@@ -20,7 +20,7 @@ def mock_model_service():
         "display_name": "Healthy",
         "confidence": 98.5,
         "all_predictions": {"Early Blight": 0.5, "Late Blight": 1.0, "Healthy": 98.5},
-        "model_type": "tflite",
+        "model_type": "keras",
     }
     return svc
 

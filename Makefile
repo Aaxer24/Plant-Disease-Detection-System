@@ -1,5 +1,5 @@
 .PHONY: install install-dev install-train lint format test run \
-        prepare-data train train-smoke evaluate convert-model dvc-repro \
+        prepare-data train train-smoke evaluate dvc-repro \
         frontend app docker-build docker-up docker-down mlflow-ui clean
 
 # NOTE: activate the venv first (e.g. `conda activate ./venv` on Windows) —
@@ -48,9 +48,6 @@ train-smoke:
 
 evaluate:
 	python scripts/evaluate.py
-
-convert-model:
-	python scripts/convert_model.py
 
 dvc-repro:
 	dvc repro

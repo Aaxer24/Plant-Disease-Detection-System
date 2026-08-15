@@ -84,8 +84,7 @@ plant-disease-detection/
 ├── scripts/                       # thin CLI wrappers around src/
 │   ├── make_dataset.py
 │   ├── train.py
-│   ├── evaluate.py
-│   └── convert_model.py           # Keras → TFLite converter
+│   └── evaluate.py
 │
 ├── app/
 │   ├── app.py                     # launches backend (uvicorn) + frontend (streamlit) together
@@ -182,7 +181,6 @@ Or run stages directly without DVC's caching/skip logic:
 make prepare-data
 make train                # or: make train-smoke (2 epochs, quick sanity check)
 make evaluate
-make convert-model        # Keras → TFLite, for the API/mobile
 ```
 
 **Architecture note:** the CNN uses six 3×3 valid-padding Conv+MaxPool blocks, which requires the
@@ -304,7 +302,6 @@ make format                     # ruff auto-format
 make prepare-data                  # DVC "prepare" stage
 make train                            # DVC "train" stage (or make train-smoke)
 make evaluate                            # DVC "evaluate" stage
-make convert-model                          # Keras → TFLite
 make dvc-repro                                 # full pipeline via DVC
 make frontend                                     # Streamlit only (needs its own venv)
 make app                                             # backend + frontend together

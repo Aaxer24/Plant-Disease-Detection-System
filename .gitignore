@@ -21,7 +21,6 @@ venv/
 
 # Models — versioned via MLflow's Model Registry, not git/DVC (see
 # src/models/train.py).
-*.tflite
 *.keras
 *.h5
 models/.mlflow_run_id

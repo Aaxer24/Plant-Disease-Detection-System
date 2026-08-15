@@ -1,4 +1,4 @@
-"""TFLite / Keras inference service."""
+"""Keras inference service."""
 
 import io
 import logging
@@ -17,43 +17,27 @@ class ModelService:
 
     def __init__(self, settings: Settings) -> None:
         self._settings = settings
-        self._interpreter = None
         self._keras_model = None
-        self._model_type = "none"
         self._load_model()
 
     def _load_model(self) -> None:
-        """Try TFLite first, fall back to Keras."""
-        tflite_path = os.path.join(self._settings.MODEL_DIR, f"{self._settings.MODEL_NAME}.tflite")
         keras_path = os.path.join(self._settings.MODEL_DIR, f"{self._settings.MODEL_NAME}.keras")
 
         try:
             import tensorflow as tf
 
-            self._interpreter = tf.lite.Interpreter(model_path=tflite_path)
-            self._interpreter.allocate_tensors()
-            self._model_type = "tflite"
-            logger.info("TFLite model loaded from %s", tflite_path)
-            return
-        except Exception:
-            logger.warning("TFLite load failed, trying Keras...", exc_info=True)
-
-        try:
-            import tensorflow as tf
-
             self._keras_model = tf.keras.models.load_model(keras_path)
-            self._model_type = "keras"
             logger.info("Keras model loaded from %s", keras_path)
         except Exception:
             logger.error(
-                "Failed to load any model from %s",
+                "Failed to load model from %s",
                 self._settings.MODEL_DIR,
                 exc_info=True,
             )
 
     @property
     def model_loaded(self) -> bool:
-        return self._model_type != "none"
+        return self._keras_model is not None
 
     def preprocess_image(self, image_bytes: bytes) -> np.ndarray:
         """Decode, resize and batch an image."""
@@ -68,18 +52,7 @@ class ModelService:
             raise RuntimeError("No model loaded")
 
         image_array = self.preprocess_image(image_bytes)
-
-        if self._model_type == "tflite":
-            inp = self._interpreter.get_input_details()
-            out = self._interpreter.get_output_details()
-            image_array = image_array.astype(np.float32)
-            self._interpreter.set_tensor(inp[0]["index"], image_array)
-            self._interpreter.invoke()
-            predictions = self._interpreter.get_tensor(out[0]["index"])[0]
-        elif self._model_type == "keras":
-            predictions = self._keras_model.predict(image_array)[0]
-        else:
-            raise RuntimeError("Invalid model state")
+        predictions = self._keras_model.predict(image_array)[0]
 
         idx = int(np.argmax(predictions))
         confidence = round(float(predictions[idx]) * 100, 2)
@@ -98,5 +71,5 @@ class ModelService:
             "display_name": display_name,
             "confidence": confidence,
             "all_predictions": all_predictions,
-            "model_type": self._model_type,
+            "model_type": "keras",
         }
