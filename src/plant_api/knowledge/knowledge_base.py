@@ -757,9 +757,21 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Apply a dormant-season fungicide spray in high-pressure orchards",
         ],
         "recommended_pesticides": [
-            {"name": "Captan", "type": "Fungicide", "usage": "Apply as a protectant spray every 7-10 days during wet spring weather"},
-            {"name": "Myclobutanil", "type": "Systemic Fungicide", "usage": "Apply at green tip and repeat per label through petal fall"},
-            {"name": "Sulfur", "type": "Fungicide (organic option)", "usage": "Apply preventively; avoid during high heat to prevent leaf burn"},
+            {
+                "name": "Captan",
+                "type": "Fungicide",
+                "usage": "Apply as a protectant spray every 7-10 days during wet spring weather",
+            },
+            {
+                "name": "Myclobutanil",
+                "type": "Systemic Fungicide",
+                "usage": "Apply at green tip and repeat per label through petal fall",
+            },
+            {
+                "name": "Sulfur",
+                "type": "Fungicide (organic option)",
+                "usage": "Apply preventively; avoid during high heat to prevent leaf burn",
+            },
         ],
         "severity": "Moderate to High - can cause major fruit loss and defoliation in wet years",
         "season": "Cool, wet spring weather during leaf and fruit development",
@@ -769,7 +781,7 @@ PLANT_DISEASE_KNOWLEDGE = {
         "scientific_name": "Botryosphaeria obtusa",
         "description": "Black rot affects apple leaves, fruit, and bark, causing leaf spots, fruit rot, and cankers on branches. It's especially damaging on trees stressed by winter injury, drought, or poor nutrition.",
         "symptoms": [
-            "Purple-bordered brown leaf spots (\"frog-eye leaf spot\")",
+            'Purple-bordered brown leaf spots ("frog-eye leaf spot")',
             "Fruit rot starting at the calyx end, turning black and mummified",
             "Concentric rings visible on rotted fruit",
             "Sunken, reddish-brown cankers on branches and trunk",
@@ -793,8 +805,16 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Ensure good air circulation through proper pruning",
         ],
         "recommended_pesticides": [
-            {"name": "Captan", "type": "Fungicide", "usage": "Apply during the cover spray period per regional extension guidelines"},
-            {"name": "Thiophanate-methyl", "type": "Systemic Fungicide", "usage": "Apply per label, especially after pruning wounds"},
+            {
+                "name": "Captan",
+                "type": "Fungicide",
+                "usage": "Apply during the cover spray period per regional extension guidelines",
+            },
+            {
+                "name": "Thiophanate-methyl",
+                "type": "Systemic Fungicide",
+                "usage": "Apply per label, especially after pruning wounds",
+            },
         ],
         "severity": "Moderate - primarily affects stressed or wounded trees, can cause fruit loss",
         "season": "Warm, humid summer weather; canker infections can occur year-round",
@@ -829,8 +849,16 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Apply preventive fungicide in high-pressure areas",
         ],
         "recommended_pesticides": [
-            {"name": "Myclobutanil", "type": "Systemic Fungicide", "usage": "Apply at pink bud stage and repeat per label through early summer"},
-            {"name": "Propiconazole", "type": "Systemic Fungicide", "usage": "Apply preventively before spring rains begin"},
+            {
+                "name": "Myclobutanil",
+                "type": "Systemic Fungicide",
+                "usage": "Apply at pink bud stage and repeat per label through early summer",
+            },
+            {
+                "name": "Propiconazole",
+                "type": "Systemic Fungicide",
+                "usage": "Apply preventively before spring rains begin",
+            },
         ],
         "severity": "Low to Moderate - mainly cosmetic on leaves, but can reduce fruit quality and yield",
         "season": "Spring, during wet weather when cedar galls release spores",
@@ -930,9 +958,21 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Remove water sprouts and suckers that are highly susceptible",
         ],
         "recommended_pesticides": [
-            {"name": "Sulfur", "type": "Fungicide (organic option)", "usage": "Apply at first sign of white growth; avoid in high heat"},
-            {"name": "Myclobutanil", "type": "Systemic Fungicide", "usage": "Apply per label, rotate with other fungicide classes to prevent resistance"},
-            {"name": "Potassium bicarbonate", "type": "Fungicide (organic option)", "usage": "Contact fungicide, apply every 7-14 days"},
+            {
+                "name": "Sulfur",
+                "type": "Fungicide (organic option)",
+                "usage": "Apply at first sign of white growth; avoid in high heat",
+            },
+            {
+                "name": "Myclobutanil",
+                "type": "Systemic Fungicide",
+                "usage": "Apply per label, rotate with other fungicide classes to prevent resistance",
+            },
+            {
+                "name": "Potassium bicarbonate",
+                "type": "Fungicide (organic option)",
+                "usage": "Contact fungicide, apply every 7-14 days",
+            },
         ],
         "severity": "Moderate - reduces fruit quality and tree vigor, rarely fatal",
         "season": "Warm days with cool nights and high humidity, typically late spring to summer",
@@ -998,8 +1038,16 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Avoid excessive plant density which increases humidity within the canopy",
         ],
         "recommended_pesticides": [
-            {"name": "Azoxystrobin", "type": "Strobilurin Fungicide", "usage": "Apply at VT (tasseling) stage per label for best yield protection"},
-            {"name": "Propiconazole", "type": "Triazole Fungicide", "usage": "Apply at first symptom onset; rotate with other fungicide classes"},
+            {
+                "name": "Azoxystrobin",
+                "type": "Strobilurin Fungicide",
+                "usage": "Apply at VT (tasseling) stage per label for best yield protection",
+            },
+            {
+                "name": "Propiconazole",
+                "type": "Triazole Fungicide",
+                "usage": "Apply at first symptom onset; rotate with other fungicide classes",
+            },
         ],
         "severity": "High - can cause significant yield loss in susceptible hybrids under favourable conditions",
         "season": "Warm, humid weather mid-to-late in the growing season",
@@ -1031,8 +1079,16 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Avoid excessive nitrogen which can increase susceptibility",
         ],
         "recommended_pesticides": [
-            {"name": "Azoxystrobin", "type": "Strobilurin Fungicide", "usage": "Apply only if disease is severe and hybrid is susceptible"},
-            {"name": "Propiconazole", "type": "Triazole Fungicide", "usage": "Apply per label if pustule coverage exceeds economic threshold"},
+            {
+                "name": "Azoxystrobin",
+                "type": "Strobilurin Fungicide",
+                "usage": "Apply only if disease is severe and hybrid is susceptible",
+            },
+            {
+                "name": "Propiconazole",
+                "type": "Triazole Fungicide",
+                "usage": "Apply per label if pustule coverage exceeds economic threshold",
+            },
         ],
         "severity": "Low to Moderate - most hybrids are resistant; sweet corn is more susceptible",
         "season": "Cool, humid weather; spores arrive via wind currents each growing season",
@@ -1065,8 +1121,16 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Avoid irrigation practices that extend leaf wetness overnight",
         ],
         "recommended_pesticides": [
-            {"name": "Azoxystrobin + Propiconazole", "type": "Combination Fungicide", "usage": "Apply at first lesion detection, especially pre-tassel"},
-            {"name": "Pyraclostrobin", "type": "Strobilurin Fungicide", "usage": "Apply per label during early reproductive stages for best yield protection"},
+            {
+                "name": "Azoxystrobin + Propiconazole",
+                "type": "Combination Fungicide",
+                "usage": "Apply at first lesion detection, especially pre-tassel",
+            },
+            {
+                "name": "Pyraclostrobin",
+                "type": "Strobilurin Fungicide",
+                "usage": "Apply per label during early reproductive stages for best yield protection",
+            },
         ],
         "severity": "High - can cause substantial yield loss if established before grain fill",
         "season": "Moderate temperatures with extended periods of leaf wetness, mid-season",
@@ -1112,7 +1176,7 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Small, reddish-brown circular spots on leaves with darker margins",
             "Black pycnidia (fungal fruiting bodies) visible within leaf spots",
             "Berries develop light brown spots that rapidly spread over the whole fruit",
-            "Infected berries shrivel into hard, black \"mummies\"",
+            'Infected berries shrivel into hard, black "mummies"',
         ],
         "causes": [
             "Caused by the fungus Guignardia bidwellii",
@@ -1132,8 +1196,16 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Avoid working in wet vineyards which can spread spores",
         ],
         "recommended_pesticides": [
-            {"name": "Mancozeb", "type": "Protectant Fungicide", "usage": "Apply from bud break through bloom on a 7-14 day schedule"},
-            {"name": "Myclobutanil", "type": "Systemic Fungicide", "usage": "Apply per label, especially during the 6-week post-bloom critical period"},
+            {
+                "name": "Mancozeb",
+                "type": "Protectant Fungicide",
+                "usage": "Apply from bud break through bloom on a 7-14 day schedule",
+            },
+            {
+                "name": "Myclobutanil",
+                "type": "Systemic Fungicide",
+                "usage": "Apply per label, especially during the 6-week post-bloom critical period",
+            },
         ],
         "severity": "High - can destroy entire crop in warm, wet seasons if untreated",
         "season": "Warm, wet weather from bud break through berry development",
@@ -1143,7 +1215,7 @@ PLANT_DISEASE_KNOWLEDGE = {
         "scientific_name": "Phaeomoniella chlamydospora and associated fungi",
         "description": "Esca, also called Black Measles, is a complex trunk disease of grapevines caused by several wood-rotting fungi, leading to internal decay, leaf discoloration, and vine decline over years.",
         "symptoms": [
-            "\"Tiger-stripe\" pattern of yellow/red discoloration between leaf veins",
+            '"Tiger-stripe" pattern of yellow/red discoloration between leaf veins',
             "Dark spots (measles) on berries with a purple-brown ring",
             "Sudden vine collapse (apoplexy) possible in hot weather",
             "Internal wood shows dark streaking or spongy decay when cut",
@@ -1167,7 +1239,11 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Avoid vine stress from drought or over-cropping",
         ],
         "recommended_pesticides": [
-            {"name": "Wound sealant/fungicide paste", "type": "Protective Wound Treatment", "usage": "Apply immediately after pruning to reduce fungal entry, per product label"},
+            {
+                "name": "Wound sealant/fungicide paste",
+                "type": "Protective Wound Treatment",
+                "usage": "Apply immediately after pruning to reduce fungal entry, per product label",
+            },
         ],
         "severity": "High - a chronic, largely incurable trunk disease that shortens vineyard productive life",
         "season": "Symptoms often appear/worsen during hot, dry summer weather; infection occurs at pruning time",
@@ -1200,8 +1276,16 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Remove and destroy fallen leaves each autumn",
         ],
         "recommended_pesticides": [
-            {"name": "Mancozeb", "type": "Protectant Fungicide", "usage": "Apply on a preventive schedule during warm, humid periods"},
-            {"name": "Copper-based fungicide", "type": "Fungicide (organic option)", "usage": "Apply preventively, especially in organic vineyards"},
+            {
+                "name": "Mancozeb",
+                "type": "Protectant Fungicide",
+                "usage": "Apply on a preventive schedule during warm, humid periods",
+            },
+            {
+                "name": "Copper-based fungicide",
+                "type": "Fungicide (organic option)",
+                "usage": "Apply preventively, especially in organic vineyards",
+            },
         ],
         "severity": "Moderate - primarily a late-season concern that can weaken vines over time",
         "season": "Warm, humid weather in mid-to-late summer",
@@ -1246,7 +1330,7 @@ PLANT_DISEASE_KNOWLEDGE = {
         "symptoms": [
             "Asymmetric, blotchy yellow mottling on leaves (different on each side of the leaf)",
             "Small, misshapen, bitter-tasting fruit that stays partially green at the bottom",
-            "Yellow shoots (\"yellow dragon\" appearance, the origin of the Chinese name)",
+            'Yellow shoots ("yellow dragon" appearance, the origin of the Chinese name)',
             "Twig dieback and progressive canopy thinning over time",
             "Premature fruit drop",
         ],
@@ -1270,8 +1354,16 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Coordinate area-wide psyllid management with neighboring growers",
         ],
         "recommended_pesticides": [
-            {"name": "Imidacloprid", "type": "Systemic Insecticide (for psyllid vector)", "usage": "Apply as a soil drench per label to control psyllid populations"},
-            {"name": "Foliar insecticides (various)", "type": "Insecticide (for psyllid vector)", "usage": "Rotate modes of action per local extension guidance to manage psyllids"},
+            {
+                "name": "Imidacloprid",
+                "type": "Systemic Insecticide (for psyllid vector)",
+                "usage": "Apply as a soil drench per label to control psyllid populations",
+            },
+            {
+                "name": "Foliar insecticides (various)",
+                "type": "Insecticide (for psyllid vector)",
+                "usage": "Rotate modes of action per local extension guidance to manage psyllids",
+            },
         ],
         "severity": "Very High - incurable, ultimately fatal to the tree, and a major economic threat to citrus production",
         "season": "Year-round risk wherever the Asian citrus psyllid is present",
@@ -1285,7 +1377,7 @@ PLANT_DISEASE_KNOWLEDGE = {
         "description": "Bacterial spot is a major disease of peaches and other stone fruit, causing leaf spots, defoliation, and unsightly fruit lesions that reduce marketable yield, especially in wet regions.",
         "symptoms": [
             "Small, angular, water-soaked spots on leaves that turn purple to brown",
-            "Leaf centers can dry out and fall away, giving a \"shot-hole\" appearance",
+            'Leaf centers can dry out and fall away, giving a "shot-hole" appearance',
             "Dark, sunken, scabby lesions on fruit surface, sometimes cracking",
             "Premature leaf yellowing and drop in severe cases",
         ],
@@ -1307,8 +1399,16 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Avoid planting in poorly drained, sandy soils prone to nutrient stress",
         ],
         "recommended_pesticides": [
-            {"name": "Copper Hydroxide", "type": "Bactericide", "usage": "Apply during dormancy and again at early leaf emergence per label"},
-            {"name": "Oxytetracycline", "type": "Bactericide (where permitted)", "usage": "Use only where locally approved, following label rates strictly"},
+            {
+                "name": "Copper Hydroxide",
+                "type": "Bactericide",
+                "usage": "Apply during dormancy and again at early leaf emergence per label",
+            },
+            {
+                "name": "Oxytetracycline",
+                "type": "Bactericide (where permitted)",
+                "usage": "Use only where locally approved, following label rates strictly",
+            },
         ],
         "severity": "Moderate to High - can significantly reduce fruit quality and cause defoliation in wet years",
         "season": "Warm, wet spring and early summer weather",
@@ -1441,9 +1541,21 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Water at the base and avoid wetting foliage",
         ],
         "recommended_pesticides": [
-            {"name": "Sulfur", "type": "Fungicide (organic option)", "usage": "Apply at first sign of disease; avoid during high heat to prevent leaf burn"},
-            {"name": "Potassium bicarbonate", "type": "Fungicide (organic option)", "usage": "Contact fungicide, apply every 7-14 days"},
-            {"name": "Myclobutanil", "type": "Systemic Fungicide", "usage": "Apply per label, rotate fungicide classes to avoid resistance"},
+            {
+                "name": "Sulfur",
+                "type": "Fungicide (organic option)",
+                "usage": "Apply at first sign of disease; avoid during high heat to prevent leaf burn",
+            },
+            {
+                "name": "Potassium bicarbonate",
+                "type": "Fungicide (organic option)",
+                "usage": "Contact fungicide, apply every 7-14 days",
+            },
+            {
+                "name": "Myclobutanil",
+                "type": "Systemic Fungicide",
+                "usage": "Apply per label, rotate fungicide classes to avoid resistance",
+            },
         ],
         "severity": "Moderate to High - can significantly reduce yield and vine vigor if untreated",
         "season": "Warm, humid weather; often worsens in mid-to-late summer",
@@ -1479,8 +1591,16 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Avoid overhead irrigation late in the day",
         ],
         "recommended_pesticides": [
-            {"name": "Captan", "type": "Fungicide", "usage": "Apply as a protectant spray every 7-14 days during wet weather"},
-            {"name": "Myclobutanil", "type": "Systemic Fungicide", "usage": "Apply per label at first symptom onset"},
+            {
+                "name": "Captan",
+                "type": "Fungicide",
+                "usage": "Apply as a protectant spray every 7-14 days during wet weather",
+            },
+            {
+                "name": "Myclobutanil",
+                "type": "Systemic Fungicide",
+                "usage": "Apply per label at first symptom onset",
+            },
         ],
         "severity": "Moderate - reduces plant vigor and yield but rarely kills the plant",
         "season": "Warm, wet weather; often worst in spring and after fruiting",
