@@ -1,6 +1,6 @@
 # 🌿 Plant Disease Detection
 
-Production-grade plant disease detection for **potato, tomato and pepper** crops (15 classes) — a
+Production-grade plant disease detection across **14 crops** (38 classes) — a
 training pipeline orchestrated by DVC (data versioning only) with MLflow as the single source of
 truth for experiments and model versions, a FastAPI serving layer with a Groq-powered RAG chatbot, and a
 Streamlit frontend.
@@ -51,7 +51,7 @@ plant-disease-detection/
 │   │   ├── make_dataset.py       # DVC "prepare" stage: raw -> processed train/val/test split
 │   │   └── preprocess.py          # dataset loading + augmentation layers
 │   ├── models/
-│   │   ├── model.py               # CNN architecture
+│   │   ├── model.py               # MobileNetV2 transfer-learning architecture
 │   │   ├── train.py                # DVC "train" stage: trains, checkpoints, logs to MLflow
 │   │   └── evaluate.py              # DVC "evaluate" stage: confusion matrix, curves, report
 │   ├── utils/
@@ -63,7 +63,7 @@ plant-disease-detection/
 │       ├── routers/                       #   health | predict | chat
 │       ├── services/                       #   ModelService | MlflowService | ChatService
 │       ├── schemas/                         #   Pydantic request/response models
-│       └── knowledge/                        #   disease knowledge base (RAG), all 15 classes
+│       └── knowledge/                        #   disease knowledge base (RAG), all 38 classes
 │
 ├── tests/                         # pytest suite (mocked services)
 │
@@ -104,12 +104,23 @@ plant-disease-detection/
 
 ---
 
-## Detected Classes (15)
+## Detected Classes (38)
 
 | Crop | Classes |
 |------|---------|
+| 🍎 Apple | Scab · Black Rot · Cedar Apple Rust · Healthy |
+| 🫐 Blueberry | Healthy |
+| 🍒 Cherry | Powdery Mildew · Healthy |
+| 🌽 Corn | Cercospora/Gray Leaf Spot · Common Rust · Northern Leaf Blight · Healthy |
+| 🍇 Grape | Black Rot · Esca (Black Measles) · Leaf Blight (Isariopsis) · Healthy |
+| 🍊 Orange | Citrus Greening (Huanglongbing) |
+| 🍑 Peach | Bacterial Spot · Healthy |
 | 🫑 Pepper | Bacterial Spot · Healthy |
 | 🥔 Potato | Early Blight · Late Blight · Healthy |
+| 🍇 Raspberry | Healthy |
+| 🌱 Soybean | Healthy |
+| 🎃 Squash | Powdery Mildew |
+| 🍓 Strawberry | Leaf Scorch · Healthy |
 | 🍅 Tomato | Bacterial Spot · Early Blight · Late Blight · Leaf Mold · Septoria Leaf Spot · Spider Mites · Target Spot · Yellow Leaf Curl Virus · Mosaic Virus · Healthy |
 
 Full disease info (symptoms, causes, treatment, prevention, pesticides) lives in
@@ -157,7 +168,7 @@ versioning stops there — that's MLflow's job.
 - **prepare** (`src/data/make_dataset.py`): splits `data/raw/images` into
   `data/processed/{train,val,test}` per `params.yaml`'s `prepare.*` ratios. Uses **hardlinks**, not
   copies — same files, zero extra disk.
-- **train** (`src/models/train.py`): builds the CNN, trains with `EarlyStopping` +
+- **train** (`src/models/train.py`): builds the MobileNetV2 transfer-learning model, trains with `EarlyStopping` +
   `ModelCheckpoint`, logs params/per-epoch metrics/TensorBoard to MLflow, saves
   `models/plant_disease_model.keras` locally (what the API loads) **and** logs + registers it as a
   new version in MLflow's Model Registry (`mlflow.keras.log_model(..., registered_model_name=...)`).
@@ -183,9 +194,11 @@ make train                # or: make train-smoke (2 epochs, quick sanity check)
 make evaluate
 ```
 
-**Architecture note:** the CNN uses six 3×3 valid-padding Conv+MaxPool blocks, which requires the
-default 256×256 input — a much smaller `image_size` in `params.yaml` will collapse the spatial
-dimensions to zero/negative by the final conv layer and fail.
+**Architecture note:** the model is a frozen, ImageNet-pretrained MobileNetV2 backbone
+(`weights="imagenet"`, `trainable=False`) with a small trainable head (GlobalAveragePooling2D →
+Dropout → Dense(128) → Dense(num_classes)) on top — only the head trains, which converges in far
+fewer epochs than training a CNN from scratch. Preprocessing rescales to `[-1, 1]` (not `[0, 1]`)
+to match what the pretrained ImageNet weights expect.
 
 To change hyperparameters, edit `params.yaml` (not the scripts) — that's what keeps `dvc repro`
 reproducible and diffable.

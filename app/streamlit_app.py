@@ -257,7 +257,7 @@ st.markdown(
     """
     <div class="hero">
         <h1>🌿 Plant Disease Detection</h1>
-        <p>AI-powered leaf diagnosis for potato, tomato and pepper crops — upload a photo for an
+        <p>AI-powered leaf diagnosis across 14 crops — upload a photo for an
         instant assessment, treatment guidance, and an expert chat assistant.</p>
     </div>
     """,
@@ -288,12 +288,23 @@ with st.sidebar:
     st.markdown("---")
     st.markdown("### Coverage")
     st.markdown(
+        "🍎 **Apple** — Scab, Black Rot, Cedar Rust, Healthy\n\n"
+        "🫐 **Blueberry** — Healthy\n\n"
+        "🍒 **Cherry** — Powdery Mildew, Healthy\n\n"
+        "🌽 **Corn** — Gray Leaf Spot, Common Rust, N. Leaf Blight, Healthy\n\n"
+        "🍇 **Grape** — Black Rot, Esca, Leaf Blight, Healthy\n\n"
+        "🍊 **Orange** — Citrus Greening (HLB)\n\n"
+        "🍑 **Peach** — Bacterial Spot, Healthy\n\n"
         "🫑 **Pepper** — Bacterial Spot, Healthy\n\n"
         "🥔 **Potato** — Early/Late Blight, Healthy\n\n"
+        "🍇 **Raspberry** — Healthy\n\n"
+        "🌱 **Soybean** — Healthy\n\n"
+        "🎃 **Squash** — Powdery Mildew\n\n"
+        "🍓 **Strawberry** — Leaf Scorch, Healthy\n\n"
         "🍅 **Tomato** — 9 diseases + Healthy"
     )
     st.markdown("---")
-    st.caption("15 classes · CNN classifier · MLflow-tracked model")
+    st.caption("38 classes · MobileNetV2 transfer learning · MLflow-tracked model")
 
 tab_detect, tab_chat = st.tabs(["🔍  Detect Disease", "💬  Ask the AI"])
 
@@ -355,7 +366,7 @@ with tab_detect:
                 unsafe_allow_html=True,
             )
 
-            with st.expander("📊 Confidence across all 15 classes", expanded=False):
+            with st.expander("📊 Confidence across all 38 classes", expanded=False):
                 render_predictions_chart(result["all_predictions"])
 
             if info:

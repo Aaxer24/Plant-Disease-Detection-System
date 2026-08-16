@@ -36,6 +36,9 @@ mlflow.db
 # Logs
 logs/
 
+# Disk-based tf.data cache (src/data/preprocess.py) — regenerated automatically
+.cache/
+
 # Generated evaluation/training artifacts (regenerate via `make train`/`make
 # evaluate` or `dvc repro`) — MLflow is the system of record for these, not
 # git or DVC.
@@ -58,5 +61,5 @@ node_modules/
 .DS_Store
 Thumbs.db
 
-# Personal reference doc, not part of the codebase
-Plant_Disease_Detection_Build_Guide.pdf
+# Personal reference docs, not part of the codebase
+docs/

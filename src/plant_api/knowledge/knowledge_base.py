@@ -1,5 +1,7 @@
 """
-Comprehensive knowledge base for potato, tomato and pepper diseases.
+Comprehensive knowledge base for 38 disease/healthy classes across 14 crops
+(apple, blueberry, cherry, corn, grape, orange, peach, pepper, potato,
+raspberry, soybean, squash, strawberry, tomato).
 Used as RAG context for the AI chatbot to give accurate farming advice.
 """
 
@@ -718,6 +720,797 @@ PLANT_DISEASE_KNOWLEDGE = {
             "Mulch to conserve moisture and reduce soil splash onto leaves",
             "Remove suckers and lower leaves touching the soil",
             "Harvest regularly to encourage continued fruit production",
+        ],
+        "severity": "None - Plant is healthy!",
+        "season": "N/A",
+    },
+    # ------------------------------------------------------------------ #
+    # Apple
+    # ------------------------------------------------------------------ #
+    "Apple___Apple_scab": {
+        "disease_name": "Apple Scab",
+        "scientific_name": "Venturia inaequalis",
+        "description": "Apple scab is one of the most common and serious fungal diseases of apple, causing olive-green to black lesions on leaves and fruit that reduce marketability and, in severe cases, defoliate the tree.",
+        "symptoms": [
+            "Olive-green to brown/black velvety spots on leaves, often on the underside first",
+            "Similar dark, scabby lesions on fruit that can crack as fruit grows",
+            "Infected leaves may pucker, curl, and drop early",
+            "Severe infections cause significant premature defoliation",
+        ],
+        "causes": [
+            "Caused by the fungus Venturia inaequalis",
+            "Overwinters in fallen leaf litter and releases spores in spring",
+            "Spreads via wind and rain-splashed spores during wet spring weather",
+            "Favoured by cool, wet spring conditions with extended leaf wetness",
+        ],
+        "treatment": [
+            "Apply fungicides (captan, myclobutanil, or sulfur-based products) starting at green tip stage",
+            "Continue protectant sprays through the primary infection period (spring rains)",
+            "Remove and destroy fallen leaves in autumn to reduce overwintering spores",
+            "Prune for better air circulation to speed leaf drying",
+        ],
+        "prevention": [
+            "Plant scab-resistant apple varieties where possible",
+            "Rake up and destroy fallen leaves every autumn",
+            "Avoid overhead irrigation late in the day",
+            "Prune to open the canopy and improve airflow/sun penetration",
+            "Apply a dormant-season fungicide spray in high-pressure orchards",
+        ],
+        "recommended_pesticides": [
+            {"name": "Captan", "type": "Fungicide", "usage": "Apply as a protectant spray every 7-10 days during wet spring weather"},
+            {"name": "Myclobutanil", "type": "Systemic Fungicide", "usage": "Apply at green tip and repeat per label through petal fall"},
+            {"name": "Sulfur", "type": "Fungicide (organic option)", "usage": "Apply preventively; avoid during high heat to prevent leaf burn"},
+        ],
+        "severity": "Moderate to High - can cause major fruit loss and defoliation in wet years",
+        "season": "Cool, wet spring weather during leaf and fruit development",
+    },
+    "Apple___Black_rot": {
+        "disease_name": "Apple Black Rot",
+        "scientific_name": "Botryosphaeria obtusa",
+        "description": "Black rot affects apple leaves, fruit, and bark, causing leaf spots, fruit rot, and cankers on branches. It's especially damaging on trees stressed by winter injury, drought, or poor nutrition.",
+        "symptoms": [
+            "Purple-bordered brown leaf spots (\"frog-eye leaf spot\")",
+            "Fruit rot starting at the calyx end, turning black and mummified",
+            "Concentric rings visible on rotted fruit",
+            "Sunken, reddish-brown cankers on branches and trunk",
+        ],
+        "causes": [
+            "Caused by the fungus Botryosphaeria obtusa",
+            "Enters through wounds, dead wood, and winter-injured tissue",
+            "Overwinters in cankers, mummified fruit, and dead bark",
+            "Favoured by warm, humid weather and tree stress",
+        ],
+        "treatment": [
+            "Prune out and destroy cankered wood and mummified fruit",
+            "Apply fungicides (captan or thiophanate-methyl) during the growing season",
+            "Remove dead or weakened branches promptly",
+            "Improve overall tree vigor with proper fertilization and watering",
+        ],
+        "prevention": [
+            "Remove mummified fruit and dead wood every dormant season",
+            "Avoid unnecessary wounding of bark and branches",
+            "Maintain tree vigor - stressed trees are far more susceptible",
+            "Ensure good air circulation through proper pruning",
+        ],
+        "recommended_pesticides": [
+            {"name": "Captan", "type": "Fungicide", "usage": "Apply during the cover spray period per regional extension guidelines"},
+            {"name": "Thiophanate-methyl", "type": "Systemic Fungicide", "usage": "Apply per label, especially after pruning wounds"},
+        ],
+        "severity": "Moderate - primarily affects stressed or wounded trees, can cause fruit loss",
+        "season": "Warm, humid summer weather; canker infections can occur year-round",
+    },
+    "Apple___Cedar_apple_rust": {
+        "disease_name": "Cedar Apple Rust",
+        "scientific_name": "Gymnosporangium juniperi-virginianae",
+        "description": "Cedar apple rust is a fungal disease that requires both apple/crabapple and cedar/juniper trees to complete its life cycle, causing bright orange leaf spots on apple and galls on cedar.",
+        "symptoms": [
+            "Small yellow spots on upper leaf surface that enlarge and turn bright orange",
+            "Black dots (spermogonia) appear within the orange leaf spots",
+            "Orange, tube-like structures on the underside of leaves later in season",
+            "Premature leaf drop in heavy infections",
+            "Fruit may show yellow-orange spots and become distorted",
+        ],
+        "causes": [
+            "Caused by the fungus Gymnosporangium juniperi-virginianae",
+            "Requires a nearby cedar or juniper host to complete its life cycle",
+            "Spores travel from cedar galls to apple trees in spring rains",
+            "Favoured by wet spring weather and proximity to eastern redcedar",
+        ],
+        "treatment": [
+            "Apply fungicides (myclobutanil or propiconazole) starting at pink bud stage",
+            "Continue sprays through several weeks after petal fall",
+            "Remove nearby cedar/juniper trees if practical (within a few hundred meters)",
+            "Prune out visible galls on any nearby cedar trees before spring",
+        ],
+        "prevention": [
+            "Plant rust-resistant apple varieties",
+            "Avoid planting apples near cedar or juniper trees when possible",
+            "Remove galls from nearby junipers in late winter before they release spores",
+            "Apply preventive fungicide in high-pressure areas",
+        ],
+        "recommended_pesticides": [
+            {"name": "Myclobutanil", "type": "Systemic Fungicide", "usage": "Apply at pink bud stage and repeat per label through early summer"},
+            {"name": "Propiconazole", "type": "Systemic Fungicide", "usage": "Apply preventively before spring rains begin"},
+        ],
+        "severity": "Low to Moderate - mainly cosmetic on leaves, but can reduce fruit quality and yield",
+        "season": "Spring, during wet weather when cedar galls release spores",
+    },
+    "Apple___healthy": {
+        "disease_name": "Healthy Plant",
+        "scientific_name": "N/A",
+        "description": "Your apple tree appears healthy! Here are some tips to keep it productive and disease-free.",
+        "symptoms": [
+            "Leaves are uniformly green with no spots or discoloration",
+            "No fruit lesions, cracking, or premature drop",
+            "Healthy bark with no cankers or oozing",
+        ],
+        "causes": [],
+        "treatment": [
+            "No treatment needed - your tree looks healthy!",
+            "Continue regular monitoring, especially after wet spring weather",
+        ],
+        "prevention": [
+            "Rake and destroy fallen leaves each autumn to reduce fungal spores",
+            "Prune annually for good light penetration and airflow",
+            "Avoid wetting foliage with irrigation - water at the base",
+            "Apply a balanced dormant-season spray program in disease-prone areas",
+        ],
+        "recommended_pesticides": [],
+        "care_tips": [
+            "Fertilize based on a soil test, avoiding excess nitrogen",
+            "Thin fruit to improve size and reduce limb stress",
+            "Water deeply during dry spells, especially in the first few years",
+            "Monitor for pests like codling moth and aphids regularly",
+        ],
+        "severity": "None - Plant is healthy!",
+        "season": "N/A",
+    },
+    # ------------------------------------------------------------------ #
+    # Blueberry
+    # ------------------------------------------------------------------ #
+    "Blueberry___healthy": {
+        "disease_name": "Healthy Plant",
+        "scientific_name": "N/A",
+        "description": "Your blueberry bush appears healthy! Here are some tips to keep it productive.",
+        "symptoms": [
+            "Leaves are uniformly green with good color",
+            "No leaf spots, scorch, or premature reddening outside of autumn",
+            "Firm, plump berries and vigorous new cane growth",
+        ],
+        "causes": [],
+        "treatment": [
+            "No treatment needed - your plant looks healthy!",
+            "Continue regular monitoring for pests and early disease signs",
+        ],
+        "prevention": [
+            "Maintain acidic soil (pH 4.5-5.5) - blueberries are very pH sensitive",
+            "Mulch with pine bark or sawdust to retain moisture and suppress weeds",
+            "Prune out old, unproductive canes each dormant season",
+            "Ensure good drainage - blueberries dislike waterlogged roots",
+        ],
+        "recommended_pesticides": [],
+        "care_tips": [
+            "Water consistently - shallow roots are sensitive to drought stress",
+            "Fertilize with an acid-forming, ammonium-based fertilizer in spring",
+            "Net bushes to protect ripening berries from birds",
+            "Test soil pH annually and amend with sulfur if needed",
+        ],
+        "severity": "None - Plant is healthy!",
+        "season": "N/A",
+    },
+    # ------------------------------------------------------------------ #
+    # Cherry
+    # ------------------------------------------------------------------ #
+    "Cherry___Powdery_mildew": {
+        "disease_name": "Cherry Powdery Mildew",
+        "scientific_name": "Podosphaera clandestina",
+        "description": "Powdery mildew is a common fungal disease of cherry trees, coating leaves, shoots, and sometimes fruit with a white, powdery growth that weakens the tree and reduces fruit quality.",
+        "symptoms": [
+            "White, powdery fungal growth on leaves, shoots, and buds",
+            "Leaves may curl, pucker, or show pale green/yellow blotches",
+            "Infected shoot tips become stunted and distorted",
+            "Fruit can develop white patches and russeting on the skin",
+        ],
+        "causes": [
+            "Caused by the fungus Podosphaera clandestina",
+            "Overwinters in infected buds",
+            "Spreads via windborne spores, unlike most fungi does not need free water to infect",
+            "Favoured by warm days, cool nights, and high humidity (but not rain)",
+        ],
+        "treatment": [
+            "Apply fungicides (sulfur, myclobutanil, or potassium bicarbonate) at first sign of disease",
+            "Prune out and destroy infected shoots",
+            "Improve air circulation through canopy thinning",
+            "Repeat sprays per label during the susceptible growing period",
+        ],
+        "prevention": [
+            "Plant resistant cherry varieties where available",
+            "Avoid excess nitrogen fertilization, which promotes susceptible new growth",
+            "Prune to open the canopy and improve sunlight penetration",
+            "Remove water sprouts and suckers that are highly susceptible",
+        ],
+        "recommended_pesticides": [
+            {"name": "Sulfur", "type": "Fungicide (organic option)", "usage": "Apply at first sign of white growth; avoid in high heat"},
+            {"name": "Myclobutanil", "type": "Systemic Fungicide", "usage": "Apply per label, rotate with other fungicide classes to prevent resistance"},
+            {"name": "Potassium bicarbonate", "type": "Fungicide (organic option)", "usage": "Contact fungicide, apply every 7-14 days"},
+        ],
+        "severity": "Moderate - reduces fruit quality and tree vigor, rarely fatal",
+        "season": "Warm days with cool nights and high humidity, typically late spring to summer",
+    },
+    "Cherry___healthy": {
+        "disease_name": "Healthy Plant",
+        "scientific_name": "N/A",
+        "description": "Your cherry tree appears healthy! Here are some tips to keep it that way.",
+        "symptoms": [
+            "Leaves are uniformly green with no powdery coating or spots",
+            "No shoot dieback or distorted growth",
+            "Firm, well-colored fruit at harvest",
+        ],
+        "causes": [],
+        "treatment": [
+            "No treatment needed - your tree looks healthy!",
+            "Continue regular monitoring, especially during warm, humid weather",
+        ],
+        "prevention": [
+            "Prune annually to maintain an open canopy",
+            "Avoid excess nitrogen fertilizer",
+            "Water at the base and avoid wetting foliage late in the day",
+            "Remove fallen fruit and leaf debris to reduce disease carryover",
+        ],
+        "recommended_pesticides": [],
+        "care_tips": [
+            "Fertilize based on soil test results, split applications through the season",
+            "Thin fruit if heavily set to improve size and reduce limb stress",
+            "Net trees to protect ripening cherries from birds",
+            "Monitor for brown rot and cherry fruit fly during fruit development",
+        ],
+        "severity": "None - Plant is healthy!",
+        "season": "N/A",
+    },
+    # ------------------------------------------------------------------ #
+    # Corn (Maize)
+    # ------------------------------------------------------------------ #
+    "Corn___Cercospora_Gray_leaf_spot": {
+        "disease_name": "Corn Gray Leaf Spot",
+        "scientific_name": "Cercospora zeae-maydis",
+        "description": "Gray leaf spot is one of the most yield-limiting foliar diseases of corn, producing rectangular lesions on leaves that reduce photosynthetic area and can lead to premature plant death.",
+        "symptoms": [
+            "Small, tan, water-soaked spots that expand into rectangular lesions",
+            "Lesions run parallel to leaf veins, tan to gray in color",
+            "Lesions can merge, causing large areas of dead leaf tissue",
+            "Severe infection causes premature leaf death and stalk lodging risk",
+        ],
+        "causes": [
+            "Caused by the fungus Cercospora zeae-maydis",
+            "Survives in corn residue left on the soil surface",
+            "Spreads via windborne and rain-splashed spores",
+            "Favoured by warm, humid weather and extended leaf wetness, common in no-till fields",
+        ],
+        "treatment": [
+            "Apply foliar fungicides (strobilurin or triazole-based) at first sign of disease, especially before tasseling",
+            "Time fungicide applications based on local disease pressure forecasts",
+            "Monitor fields closely in continuous corn and no-till systems",
+        ],
+        "prevention": [
+            "Rotate with non-host crops (soybeans, small grains) for at least one year",
+            "Till under crop residue to speed decomposition where practical",
+            "Plant resistant or tolerant hybrids",
+            "Avoid excessive plant density which increases humidity within the canopy",
+        ],
+        "recommended_pesticides": [
+            {"name": "Azoxystrobin", "type": "Strobilurin Fungicide", "usage": "Apply at VT (tasseling) stage per label for best yield protection"},
+            {"name": "Propiconazole", "type": "Triazole Fungicide", "usage": "Apply at first symptom onset; rotate with other fungicide classes"},
+        ],
+        "severity": "High - can cause significant yield loss in susceptible hybrids under favourable conditions",
+        "season": "Warm, humid weather mid-to-late in the growing season",
+    },
+    "Corn___Common_rust": {
+        "disease_name": "Corn Common Rust",
+        "scientific_name": "Puccinia sorghi",
+        "description": "Common rust produces reddish-brown pustules on corn leaves. Most modern hybrids tolerate it well, but severe early infections can still reduce yield.",
+        "symptoms": [
+            "Small, circular to elongate reddish-brown pustules on both leaf surfaces",
+            "Pustules rupture and release powdery, brick-red spores",
+            "Pustules turn dark brown/black as the plant matures",
+            "Heavily infected leaves may yellow and die prematurely",
+        ],
+        "causes": [
+            "Caused by the fungus Puccinia sorghi",
+            "Spores blow in from southern overwintering areas each season",
+            "Favoured by cool temperatures (16-23°C) and high humidity/dew",
+            "Does not survive winter in most temperate corn-growing regions",
+        ],
+        "treatment": [
+            "Apply fungicides (strobilurin or triazole-based) if infection is severe before tasseling",
+            "Most hybrids have adequate resistance and rarely need treatment",
+            "Monitor susceptible sweet corn varieties more closely",
+        ],
+        "prevention": [
+            "Plant rust-resistant hybrids, especially for sweet corn",
+            "Scout fields regularly during cool, humid weather",
+            "Avoid excessive nitrogen which can increase susceptibility",
+        ],
+        "recommended_pesticides": [
+            {"name": "Azoxystrobin", "type": "Strobilurin Fungicide", "usage": "Apply only if disease is severe and hybrid is susceptible"},
+            {"name": "Propiconazole", "type": "Triazole Fungicide", "usage": "Apply per label if pustule coverage exceeds economic threshold"},
+        ],
+        "severity": "Low to Moderate - most hybrids are resistant; sweet corn is more susceptible",
+        "season": "Cool, humid weather; spores arrive via wind currents each growing season",
+    },
+    "Corn___Northern_Leaf_Blight": {
+        "disease_name": "Corn Northern Leaf Blight",
+        "scientific_name": "Exserohilum turcicum",
+        "description": "Northern leaf blight causes large, cigar-shaped gray-green to tan lesions on corn leaves, capable of significantly reducing yield if it develops before or during grain fill.",
+        "symptoms": [
+            "Long, elliptical, cigar-shaped lesions 1-6 inches long",
+            "Lesions are gray-green at first, turning tan to brown as they mature",
+            "Lesions often start on lower leaves and progress upward",
+            "Severe infections can cause a scorched, blighted appearance across the whole plant",
+        ],
+        "causes": [
+            "Caused by the fungus Exserohilum turcicum",
+            "Survives in corn residue on the soil surface",
+            "Spreads via windborne and rain-splashed spores",
+            "Favoured by moderate temperatures (18-27°C) and extended leaf wetness (dew, rain)",
+        ],
+        "treatment": [
+            "Apply foliar fungicides (strobilurin/triazole combinations) at first symptom onset",
+            "Prioritize fungicide use if disease appears before or at tasseling",
+            "Scout continuous corn and no-till fields closely",
+        ],
+        "prevention": [
+            "Plant resistant hybrids - a highly effective long-term strategy",
+            "Rotate crops away from corn for at least one year",
+            "Manage crop residue via tillage where appropriate",
+            "Avoid irrigation practices that extend leaf wetness overnight",
+        ],
+        "recommended_pesticides": [
+            {"name": "Azoxystrobin + Propiconazole", "type": "Combination Fungicide", "usage": "Apply at first lesion detection, especially pre-tassel"},
+            {"name": "Pyraclostrobin", "type": "Strobilurin Fungicide", "usage": "Apply per label during early reproductive stages for best yield protection"},
+        ],
+        "severity": "High - can cause substantial yield loss if established before grain fill",
+        "season": "Moderate temperatures with extended periods of leaf wetness, mid-season",
+    },
+    "Corn___healthy": {
+        "disease_name": "Healthy Plant",
+        "scientific_name": "N/A",
+        "description": "Your corn plant appears healthy! Here are some tips to maximize yield.",
+        "symptoms": [
+            "Leaves are uniformly green with no lesions, pustules, or blight",
+            "Strong, upright stalks with no lodging",
+            "Good ear development and kernel fill",
+        ],
+        "causes": [],
+        "treatment": [
+            "No treatment needed - your plant looks healthy!",
+            "Continue regular scouting, especially during humid mid-season weather",
+        ],
+        "prevention": [
+            "Rotate crops to break disease cycles in residue",
+            "Choose hybrids with strong disease resistance ratings for your region",
+            "Manage crop residue appropriately for your tillage system",
+            "Scout fields weekly from knee-high through grain fill",
+        ],
+        "recommended_pesticides": [],
+        "care_tips": [
+            "Fertilize based on soil test and yield goals, split nitrogen applications",
+            "Ensure adequate but not excessive plant population for your hybrid",
+            "Monitor for corn borer, rootworm, and other key pests",
+            "Scout for foliar disease onset especially in continuous corn fields",
+        ],
+        "severity": "None - Plant is healthy!",
+        "season": "N/A",
+    },
+    # ------------------------------------------------------------------ #
+    # Grape
+    # ------------------------------------------------------------------ #
+    "Grape___Black_rot": {
+        "disease_name": "Grape Black Rot",
+        "scientific_name": "Guignardia bidwellii",
+        "description": "Black rot is one of the most destructive grape diseases in warm, humid climates, capable of destroying an entire crop by rotting berries before harvest if left unmanaged.",
+        "symptoms": [
+            "Small, reddish-brown circular spots on leaves with darker margins",
+            "Black pycnidia (fungal fruiting bodies) visible within leaf spots",
+            "Berries develop light brown spots that rapidly spread over the whole fruit",
+            "Infected berries shrivel into hard, black \"mummies\"",
+        ],
+        "causes": [
+            "Caused by the fungus Guignardia bidwellii",
+            "Overwinters in mummified berries and infected canes left in the vineyard",
+            "Spreads via rain-splashed spores in spring and early summer",
+            "Favoured by warm, wet weather during bloom through berry development",
+        ],
+        "treatment": [
+            "Apply fungicides (mancozeb, myclobutanil) starting at bud break and through veraison",
+            "Remove and destroy mummified berries and infected canes during dormant pruning",
+            "Maintain a strict spray schedule during the critical early season period",
+        ],
+        "prevention": [
+            "Remove all mummified fruit from the vine and ground each dormant season",
+            "Prune for an open canopy to speed drying after rain",
+            "Choose less susceptible varieties where climate risk is high",
+            "Avoid working in wet vineyards which can spread spores",
+        ],
+        "recommended_pesticides": [
+            {"name": "Mancozeb", "type": "Protectant Fungicide", "usage": "Apply from bud break through bloom on a 7-14 day schedule"},
+            {"name": "Myclobutanil", "type": "Systemic Fungicide", "usage": "Apply per label, especially during the 6-week post-bloom critical period"},
+        ],
+        "severity": "High - can destroy entire crop in warm, wet seasons if untreated",
+        "season": "Warm, wet weather from bud break through berry development",
+    },
+    "Grape___Esca_Black_Measles": {
+        "disease_name": "Grape Esca (Black Measles)",
+        "scientific_name": "Phaeomoniella chlamydospora and associated fungi",
+        "description": "Esca, also called Black Measles, is a complex trunk disease of grapevines caused by several wood-rotting fungi, leading to internal decay, leaf discoloration, and vine decline over years.",
+        "symptoms": [
+            "\"Tiger-stripe\" pattern of yellow/red discoloration between leaf veins",
+            "Dark spots (measles) on berries with a purple-brown ring",
+            "Sudden vine collapse (apoplexy) possible in hot weather",
+            "Internal wood shows dark streaking or spongy decay when cut",
+        ],
+        "causes": [
+            "Caused by a complex of fungi including Phaeomoniella chlamydospora and Phaeoacremonium species",
+            "Enters through pruning wounds and other trunk injuries",
+            "Develops slowly over multiple years inside the vine's woody tissue",
+            "Favoured by older vines, large pruning wounds, and vine stress",
+        ],
+        "treatment": [
+            "No effective chemical cure exists once established - management is preventive and cultural",
+            "Prune out and destroy severely affected cordons or trunks",
+            "Retrain new trunks from healthy suckers if the vine is valuable",
+            "Protect fresh pruning wounds with a wound sealant or fungicide paste",
+        ],
+        "prevention": [
+            "Prune during dry weather to reduce infection risk through wounds",
+            "Make smaller, cleaner pruning cuts and avoid large wounds where possible",
+            "Remove and destroy severely infected vines to reduce inoculum",
+            "Avoid vine stress from drought or over-cropping",
+        ],
+        "recommended_pesticides": [
+            {"name": "Wound sealant/fungicide paste", "type": "Protective Wound Treatment", "usage": "Apply immediately after pruning to reduce fungal entry, per product label"},
+        ],
+        "severity": "High - a chronic, largely incurable trunk disease that shortens vineyard productive life",
+        "season": "Symptoms often appear/worsen during hot, dry summer weather; infection occurs at pruning time",
+    },
+    "Grape___Leaf_blight_Isariopsis": {
+        "disease_name": "Grape Leaf Blight (Isariopsis Leaf Spot)",
+        "scientific_name": "Pseudocercospora vitis (syn. Isariopsis clavispora)",
+        "description": "Isariopsis leaf blight causes angular leaf spots that can lead to significant defoliation late in the season, weakening vines and reducing fruit ripening quality.",
+        "symptoms": [
+            "Small, angular, dark brown to black spots on leaves, bounded by veins",
+            "Spots may merge into larger irregular blighted areas",
+            "Yellowing of leaf tissue surrounding spots",
+            "Premature defoliation in severe cases, starting with older leaves",
+        ],
+        "causes": [
+            "Caused by the fungus Pseudocercospora vitis",
+            "Overwinters in fallen leaf debris",
+            "Spreads via rain-splashed and windborne spores",
+            "Favoured by warm, humid weather, particularly later in the growing season",
+        ],
+        "treatment": [
+            "Apply fungicides (mancozeb or copper-based products) if disease pressure is high",
+            "Remove fallen leaf debris after harvest to reduce overwintering inoculum",
+            "Improve canopy airflow through leaf pulling and proper training",
+        ],
+        "prevention": [
+            "Maintain an open canopy through proper pruning and leaf removal",
+            "Avoid excessive nitrogen fertilization that promotes dense canopies",
+            "Rotate fungicide classes to prevent resistance development",
+            "Remove and destroy fallen leaves each autumn",
+        ],
+        "recommended_pesticides": [
+            {"name": "Mancozeb", "type": "Protectant Fungicide", "usage": "Apply on a preventive schedule during warm, humid periods"},
+            {"name": "Copper-based fungicide", "type": "Fungicide (organic option)", "usage": "Apply preventively, especially in organic vineyards"},
+        ],
+        "severity": "Moderate - primarily a late-season concern that can weaken vines over time",
+        "season": "Warm, humid weather in mid-to-late summer",
+    },
+    "Grape___healthy": {
+        "disease_name": "Healthy Plant",
+        "scientific_name": "N/A",
+        "description": "Your grapevine appears healthy! Here are some tips to keep it productive.",
+        "symptoms": [
+            "Leaves are uniformly green with no spots, blight, or discoloration",
+            "No berry rot, shriveling, or unusual spotting",
+            "Vigorous, well-trained canopy growth",
+        ],
+        "causes": [],
+        "treatment": [
+            "No treatment needed - your vine looks healthy!",
+            "Continue regular monitoring, especially during warm, humid weather",
+        ],
+        "prevention": [
+            "Prune annually during dry weather for an open, airy canopy",
+            "Remove mummified fruit and fallen leaves each dormant season",
+            "Maintain a preventive fungicide program in high-disease-pressure regions",
+            "Avoid vine stress from over-cropping or drought",
+        ],
+        "recommended_pesticides": [],
+        "care_tips": [
+            "Train and trellis vines for good sun exposure and airflow",
+            "Manage irrigation carefully - grapes prefer moderate, consistent moisture",
+            "Thin fruit clusters if overloaded to improve ripening quality",
+            "Monitor for key pests such as grape berry moth and Japanese beetle",
+        ],
+        "severity": "None - Plant is healthy!",
+        "season": "N/A",
+    },
+    # ------------------------------------------------------------------ #
+    # Orange
+    # ------------------------------------------------------------------ #
+    "Orange___Huanglongbing_Citrus_greening": {
+        "disease_name": "Citrus Greening (Huanglongbing / HLB)",
+        "scientific_name": "Candidatus Liberibacter spp.",
+        "description": "Huanglongbing (HLB), or citrus greening, is one of the most destructive citrus diseases worldwide. It is spread by the Asian citrus psyllid and has no cure - infected trees decline and eventually die.",
+        "symptoms": [
+            "Asymmetric, blotchy yellow mottling on leaves (different on each side of the leaf)",
+            "Small, misshapen, bitter-tasting fruit that stays partially green at the bottom",
+            "Yellow shoots (\"yellow dragon\" appearance, the origin of the Chinese name)",
+            "Twig dieback and progressive canopy thinning over time",
+            "Premature fruit drop",
+        ],
+        "causes": [
+            "Caused by the bacteria Candidatus Liberibacter asiaticus/africanus/americanus",
+            "Transmitted by the Asian citrus psyllid (Diaphorina citri) as it feeds",
+            "Can also spread via grafting infected budwood",
+            "No known cure once a tree is infected",
+        ],
+        "treatment": [
+            "There is no cure - focus is on psyllid control and removing infected trees",
+            "Apply systemic insecticides to control the Asian citrus psyllid vector",
+            "Remove and destroy confirmed infected trees to reduce disease spread",
+            "Support tree health with balanced nutrition to slow decline (does not cure disease)",
+        ],
+        "prevention": [
+            "Plant only certified disease-free nursery stock",
+            "Monitor and control Asian citrus psyllid populations aggressively",
+            "Inspect trees regularly for early mottling symptoms",
+            "Remove and destroy infected trees immediately to protect neighboring trees",
+            "Coordinate area-wide psyllid management with neighboring growers",
+        ],
+        "recommended_pesticides": [
+            {"name": "Imidacloprid", "type": "Systemic Insecticide (for psyllid vector)", "usage": "Apply as a soil drench per label to control psyllid populations"},
+            {"name": "Foliar insecticides (various)", "type": "Insecticide (for psyllid vector)", "usage": "Rotate modes of action per local extension guidance to manage psyllids"},
+        ],
+        "severity": "Very High - incurable, ultimately fatal to the tree, and a major economic threat to citrus production",
+        "season": "Year-round risk wherever the Asian citrus psyllid is present",
+    },
+    # ------------------------------------------------------------------ #
+    # Peach
+    # ------------------------------------------------------------------ #
+    "Peach___Bacterial_spot": {
+        "disease_name": "Peach Bacterial Spot",
+        "scientific_name": "Xanthomonas arboricola pv. pruni",
+        "description": "Bacterial spot is a major disease of peaches and other stone fruit, causing leaf spots, defoliation, and unsightly fruit lesions that reduce marketable yield, especially in wet regions.",
+        "symptoms": [
+            "Small, angular, water-soaked spots on leaves that turn purple to brown",
+            "Leaf centers can dry out and fall away, giving a \"shot-hole\" appearance",
+            "Dark, sunken, scabby lesions on fruit surface, sometimes cracking",
+            "Premature leaf yellowing and drop in severe cases",
+        ],
+        "causes": [
+            "Caused by the bacterium Xanthomonas arboricola pv. pruni",
+            "Spreads via wind-driven rain and overhead irrigation",
+            "Enters through natural openings and wounds",
+            "Favoured by warm, wet weather and sandy soils with low nutrient buffering",
+        ],
+        "treatment": [
+            "Apply copper-based bactericides during dormant season and early growing season",
+            "Avoid excessive nitrogen fertilization which increases susceptibility",
+            "Prune to improve air circulation and speed leaf drying",
+        ],
+        "prevention": [
+            "Plant resistant peach varieties where available",
+            "Avoid overhead irrigation - use drip irrigation instead",
+            "Apply preventive copper sprays before bud break in high-risk orchards",
+            "Avoid planting in poorly drained, sandy soils prone to nutrient stress",
+        ],
+        "recommended_pesticides": [
+            {"name": "Copper Hydroxide", "type": "Bactericide", "usage": "Apply during dormancy and again at early leaf emergence per label"},
+            {"name": "Oxytetracycline", "type": "Bactericide (where permitted)", "usage": "Use only where locally approved, following label rates strictly"},
+        ],
+        "severity": "Moderate to High - can significantly reduce fruit quality and cause defoliation in wet years",
+        "season": "Warm, wet spring and early summer weather",
+    },
+    "Peach___healthy": {
+        "disease_name": "Healthy Plant",
+        "scientific_name": "N/A",
+        "description": "Your peach tree appears healthy! Here are some tips to keep it productive.",
+        "symptoms": [
+            "Leaves are uniformly green with no spotting or shot-holes",
+            "No fruit lesions, cracking, or premature drop",
+            "Healthy bark with no cankers or gumming",
+        ],
+        "causes": [],
+        "treatment": [
+            "No treatment needed - your tree looks healthy!",
+            "Continue regular monitoring, especially during wet spring weather",
+        ],
+        "prevention": [
+            "Prune annually for an open canopy and good airflow",
+            "Water at the base, avoiding wetting foliage",
+            "Apply a dormant-season copper spray in disease-prone regions",
+            "Maintain balanced fertility - avoid excess nitrogen",
+        ],
+        "recommended_pesticides": [],
+        "care_tips": [
+            "Thin fruit early to improve size and reduce limb stress",
+            "Fertilize based on soil test results",
+            "Monitor for peach leaf curl, brown rot, and borers regularly",
+            "Water deeply during dry spells, especially during fruit development",
+        ],
+        "severity": "None - Plant is healthy!",
+        "season": "N/A",
+    },
+    # ------------------------------------------------------------------ #
+    # Raspberry
+    # ------------------------------------------------------------------ #
+    "Raspberry___healthy": {
+        "disease_name": "Healthy Plant",
+        "scientific_name": "N/A",
+        "description": "Your raspberry plant appears healthy! Here are some tips to keep it productive.",
+        "symptoms": [
+            "Canes are green/healthy-colored with no cankers or spotting",
+            "Leaves are uniformly green with no spots or yellowing",
+            "Good fruit set and cane vigor",
+        ],
+        "causes": [],
+        "treatment": [
+            "No treatment needed - your plant looks healthy!",
+            "Continue regular monitoring for cane diseases and pests",
+        ],
+        "prevention": [
+            "Prune out old fruiting canes after harvest to improve airflow",
+            "Space canes properly to reduce humidity within the row",
+            "Avoid overhead irrigation late in the day",
+            "Remove wild/volunteer brambles nearby that can harbor disease",
+        ],
+        "recommended_pesticides": [],
+        "care_tips": [
+            "Trellis canes to keep fruit off the ground and improve airflow",
+            "Mulch to conserve moisture and suppress weeds",
+            "Fertilize lightly in spring - raspberries dislike excess nitrogen",
+            "Monitor for spotted wing drosophila during fruiting",
+        ],
+        "severity": "None - Plant is healthy!",
+        "season": "N/A",
+    },
+    # ------------------------------------------------------------------ #
+    # Soybean
+    # ------------------------------------------------------------------ #
+    "Soybean___healthy": {
+        "disease_name": "Healthy Plant",
+        "scientific_name": "N/A",
+        "description": "Your soybean plant appears healthy! Here are some tips to maximize yield.",
+        "symptoms": [
+            "Leaves are uniformly green with no spots, mosaic, or yellowing",
+            "Good pod set with no premature leaf drop",
+            "Vigorous, well-nodulated root system",
+        ],
+        "causes": [],
+        "treatment": [
+            "No treatment needed - your plant looks healthy!",
+            "Continue regular scouting throughout the growing season",
+        ],
+        "prevention": [
+            "Rotate with non-host crops such as corn to break disease cycles",
+            "Choose varieties with strong local disease resistance ratings",
+            "Manage field drainage - many soybean diseases favour wet soils",
+            "Scout weekly from emergence through pod fill",
+        ],
+        "recommended_pesticides": [],
+        "care_tips": [
+            "Ensure proper inoculation with Bradyrhizobium japonicum at planting for nitrogen fixation",
+            "Manage weeds early - competition significantly reduces yield",
+            "Monitor for soybean aphid, cyst nematode, and foliar disease pressure",
+            "Fertilize based on soil test - soybeans usually need little added nitrogen",
+        ],
+        "severity": "None - Plant is healthy!",
+        "season": "N/A",
+    },
+    # ------------------------------------------------------------------ #
+    # Squash
+    # ------------------------------------------------------------------ #
+    "Squash___Powdery_mildew": {
+        "disease_name": "Squash Powdery Mildew",
+        "scientific_name": "Podosphaera xanthii (syn. Erysiphe cichoracearum)",
+        "description": "Powdery mildew is the most common disease of squash and other cucurbits, coating leaves and stems in white powdery fungal growth that reduces photosynthesis and weakens the plant.",
+        "symptoms": [
+            "White, powdery circular spots on upper and lower leaf surfaces",
+            "Spots enlarge and merge until the whole leaf appears dusted with powder",
+            "Infected leaves yellow, curl, and die prematurely",
+            "Reduced fruit size, quality, and sugar content in severe infections",
+        ],
+        "causes": [
+            "Caused by fungi including Podosphaera xanthii",
+            "Spreads via windborne spores, does not require free water to infect",
+            "Favoured by warm days, high humidity, and shaded/crowded plantings",
+            "Can develop rapidly, especially late in the growing season",
+        ],
+        "treatment": [
+            "Apply fungicides (sulfur, potassium bicarbonate, or myclobutanil) at first sign of white spots",
+            "Remove and destroy heavily infected leaves",
+            "Improve air circulation by proper plant spacing and pruning",
+            "Repeat treatments per label as new growth emerges",
+        ],
+        "prevention": [
+            "Plant resistant/tolerant squash varieties where available",
+            "Space plants properly for good airflow",
+            "Avoid excess nitrogen fertilization which promotes susceptible new growth",
+            "Water at the base and avoid wetting foliage",
+        ],
+        "recommended_pesticides": [
+            {"name": "Sulfur", "type": "Fungicide (organic option)", "usage": "Apply at first sign of disease; avoid during high heat to prevent leaf burn"},
+            {"name": "Potassium bicarbonate", "type": "Fungicide (organic option)", "usage": "Contact fungicide, apply every 7-14 days"},
+            {"name": "Myclobutanil", "type": "Systemic Fungicide", "usage": "Apply per label, rotate fungicide classes to avoid resistance"},
+        ],
+        "severity": "Moderate to High - can significantly reduce yield and vine vigor if untreated",
+        "season": "Warm, humid weather; often worsens in mid-to-late summer",
+    },
+    # ------------------------------------------------------------------ #
+    # Strawberry
+    # ------------------------------------------------------------------ #
+    "Strawberry___Leaf_scorch": {
+        "disease_name": "Strawberry Leaf Scorch",
+        "scientific_name": "Diplocarpon earlianum",
+        "description": "Leaf scorch is a common fungal disease of strawberries that causes numerous small purple spots on leaves, which can merge into large scorched-looking blotches and weaken the plant.",
+        "symptoms": [
+            "Small, irregular purple to red spots scattered across leaf surface",
+            "Spots lack the tan/gray center typical of leaf spot disease",
+            "Spots merge into larger blotches, giving leaves a scorched appearance",
+            "Severe infection reduces plant vigor and fruit yield",
+        ],
+        "causes": [
+            "Caused by the fungus Diplocarpon earlianum",
+            "Overwinters on infected leaf debris",
+            "Spreads via rain-splashed spores",
+            "Favoured by warm, wet weather and dense, poorly ventilated plantings",
+        ],
+        "treatment": [
+            "Apply fungicides (captan or myclobutanil) at first sign of symptoms",
+            "Remove and destroy severely infected leaves after harvest (renovation)",
+            "Improve air circulation through proper plant spacing",
+        ],
+        "prevention": [
+            "Plant resistant strawberry varieties where available",
+            "Space plants for good airflow and avoid overcrowded beds",
+            "Remove old/infected leaves during post-harvest renovation",
+            "Avoid overhead irrigation late in the day",
+        ],
+        "recommended_pesticides": [
+            {"name": "Captan", "type": "Fungicide", "usage": "Apply as a protectant spray every 7-14 days during wet weather"},
+            {"name": "Myclobutanil", "type": "Systemic Fungicide", "usage": "Apply per label at first symptom onset"},
+        ],
+        "severity": "Moderate - reduces plant vigor and yield but rarely kills the plant",
+        "season": "Warm, wet weather; often worst in spring and after fruiting",
+    },
+    "Strawberry___healthy": {
+        "disease_name": "Healthy Plant",
+        "scientific_name": "N/A",
+        "description": "Your strawberry plant appears healthy! Here are some tips to keep it productive.",
+        "symptoms": [
+            "Leaves are uniformly green with no spotting or scorching",
+            "No wilting, root rot, or fruit lesions",
+            "Vigorous runners and good fruit set",
+        ],
+        "causes": [],
+        "treatment": [
+            "No treatment needed - your plant looks healthy!",
+            "Continue regular monitoring for pests and early disease signs",
+        ],
+        "prevention": [
+            "Renovate beds after harvest - remove old leaves and thin runners",
+            "Space plants for good airflow",
+            "Use mulch (straw) to keep fruit off the soil and reduce splash",
+            "Rotate planting beds every few years to avoid soil-borne disease buildup",
+        ],
+        "recommended_pesticides": [],
+        "care_tips": [
+            "Water consistently, especially during flowering and fruiting",
+            "Fertilize lightly - excess nitrogen promotes leaves over fruit",
+            "Protect ripening fruit from slugs and birds",
+            "Monitor for gray mold (Botrytis) during wet fruiting periods",
         ],
         "severity": "None - Plant is healthy!",
         "season": "N/A",

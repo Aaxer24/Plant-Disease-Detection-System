@@ -40,7 +40,7 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title="Plant Disease Detection API",
         description=(
-            "AI-powered plant disease detection for potato, tomato and pepper crops, "
+            "AI-powered plant disease detection across 14 crops (38 classes), "
             "with MLflow tracking and a RAG chatbot"
         ),
         version=__version__,

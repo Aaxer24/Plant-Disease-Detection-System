@@ -5,6 +5,60 @@
 # order Keras's image_dataset_from_directory assigns during training. Do not
 # reorder without retraining.
 classes:
+  - name: Apple___Apple_scab
+    display_name: Apple Scab
+    crop: Apple
+  - name: Apple___Black_rot
+    display_name: Apple Black Rot
+    crop: Apple
+  - name: Apple___Cedar_apple_rust
+    display_name: Apple Cedar Rust
+    crop: Apple
+  - name: Apple___healthy
+    display_name: Apple Healthy
+    crop: Apple
+  - name: Blueberry___healthy
+    display_name: Blueberry Healthy
+    crop: Blueberry
+  - name: Cherry___Powdery_mildew
+    display_name: Cherry Powdery Mildew
+    crop: Cherry
+  - name: Cherry___healthy
+    display_name: Cherry Healthy
+    crop: Cherry
+  - name: Corn___Cercospora_Gray_leaf_spot
+    display_name: Corn Cercospora / Gray Leaf Spot
+    crop: Corn
+  - name: Corn___Common_rust
+    display_name: Corn Common Rust
+    crop: Corn
+  - name: Corn___Northern_Leaf_Blight
+    display_name: Corn Northern Leaf Blight
+    crop: Corn
+  - name: Corn___healthy
+    display_name: Corn Healthy
+    crop: Corn
+  - name: Grape___Black_rot
+    display_name: Grape Black Rot
+    crop: Grape
+  - name: Grape___Esca_Black_Measles
+    display_name: Grape Esca (Black Measles)
+    crop: Grape
+  - name: Grape___Leaf_blight_Isariopsis
+    display_name: Grape Leaf Blight
+    crop: Grape
+  - name: Grape___healthy
+    display_name: Grape Healthy
+    crop: Grape
+  - name: Orange___Huanglongbing_Citrus_greening
+    display_name: Orange Citrus Greening (HLB)
+    crop: Orange
+  - name: Peach___Bacterial_spot
+    display_name: Peach Bacterial Spot
+    crop: Peach
+  - name: Peach___healthy
+    display_name: Peach Healthy
+    crop: Peach
   - name: Pepper__bell___Bacterial_spot
     display_name: Pepper Bacterial Spot
     crop: Pepper
@@ -20,6 +74,21 @@ classes:
   - name: Potato___healthy
     display_name: Potato Healthy
     crop: Potato
+  - name: Raspberry___healthy
+    display_name: Raspberry Healthy
+    crop: Raspberry
+  - name: Soybean___healthy
+    display_name: Soybean Healthy
+    crop: Soybean
+  - name: Squash___Powdery_mildew
+    display_name: Squash Powdery Mildew
+    crop: Squash
+  - name: Strawberry___Leaf_scorch
+    display_name: Strawberry Leaf Scorch
+    crop: Strawberry
+  - name: Strawberry___healthy
+    display_name: Strawberry Healthy
+    crop: Strawberry
   - name: Tomato_Bacterial_spot
     display_name: Tomato Bacterial Spot
     crop: Tomato

@@ -38,8 +38,9 @@ class ChatService:
 
         system_prompt = (
             "You are a helpful, friendly agricultural expert AI assistant specialised "
-            "in plant farming and plant diseases, with expertise in potato, tomato and "
-            "pepper crops.\n"
+            "in plant farming and plant diseases, with expertise across apple, blueberry, "
+            "cherry, corn, grape, orange, peach, pepper, potato, raspberry, soybean, squash, "
+            "strawberry and tomato crops.\n"
             "You are helping a farmer who has used an app to scan their plant leaves.\n\n"
             "STRICT DOMAIN RULE:\n"
             "- You ONLY discuss agriculture, farming, crops, plants, soil, gardening and "
@@ -155,7 +156,7 @@ class ChatService:
                 return f"🔍 Symptoms of **{info['disease_name']}**:\n\n{lines}"
 
         return (
-            "🌿 I'm here to help with potato, tomato and pepper disease questions!\n"
+            "🌿 I'm here to help with plant disease questions across 14 crops!\n"
             "You can ask me about:\n"
             "• Treatment options\n• Prevention methods\n"
             "• Recommended pesticides\n• Disease symptoms\n\n"
