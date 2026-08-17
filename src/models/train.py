@@ -144,8 +144,22 @@ def run(param_overrides: dict | None = None) -> dict:
 
         if mlflow_active:
             try:
-                mlflow.keras.log_model(
+                model_info = mlflow.keras.log_model(
                     model, artifact_path="model", registered_model_name=model_name
+                )
+                # Promote this version to "Production" so the serving API (ModelService)
+                # can find it via models:/<name>/Production without a code deploy —
+                # archives whatever version was Production before.
+                mlflow.tracking.MlflowClient().transition_model_version_stage(
+                    name=model_name,
+                    version=model_info.registered_model_version,
+                    stage="Production",
+                    archive_existing_versions=True,
+                )
+                logger.info(
+                    "Promoted %s v%s to Production stage",
+                    model_name,
+                    model_info.registered_model_version,
                 )
             except Exception:
                 logger.warning("MLflow model registration failed (non-blocking)", exc_info=True)

@@ -67,10 +67,11 @@ plant-disease-detection/
 │
 ├── tests/                         # pytest suite (mocked services)
 │
-├── models/                        # local copy of the model the API loads — gitignored, versioned
+├── models/                        # fallback copy baked into the API image — gitignored, versioned
 │   ├── plant_disease_model.keras  #   by MLflow's Model Registry, NOT DVC (dvc.yaml outs are
-│   └── checkpoints/                #   cache:false — DVC orchestrates but doesn't own/cache them)
-│       └── best.keras
+│   └── checkpoints/                #   cache:false — DVC orchestrates but doesn't own/cache them).
+│       └── best.keras              #   ModelService loads models:/.../Production from MLflow
+│                                    #   first; this file is only used if that's unreachable.
 │
 ├── logs/
 │   └── training/<run_id>/          # TensorBoard logs per training run
@@ -270,7 +271,12 @@ Two experiments:
 
 **Model versions:** every successful training run registers a new version of `plant_disease_model`
 under MLflow's Model Registry (Models tab) — v1, v2, v3... each pointing at the exact run that
-produced it, so you can trace any served model back to its hyperparameters and metrics.
+produced it, so you can trace any served model back to its hyperparameters and metrics. That new
+version is also automatically promoted to the **Production** stage (archiving whichever version
+held it before). The serving API's `ModelService` loads `models:/plant_disease_model/Production`
+from the registry at startup — so a newly trained, promoted model goes live the next time the API
+container restarts, with no code change or image rebuild needed. If the registry is unreachable,
+`ModelService` falls back to the `.keras` file baked into the image at build time.
 
 ```bash
 make mlflow-ui   # → http://localhost:5000 (standalone; use this OR docker compose's mlflow service)
@@ -290,16 +296,20 @@ Push to main / PR
     │
     ├── 1. lint    → ruff check + format check (src/, tests/, scripts/, app/)
     ├── 2. test    → pytest + coverage report
-    └── 3. docker  → build & push to Docker Hub (main only)
+    ├── 3. docker  → build & push BOTH api and frontend images to Docker Hub (main only)
+    └── 4. deploy  → SSH into EC2, `docker compose pull` the images just pushed + `up -d`
+                     (no rebuild on the server — the image that passed CI is the image that runs)
 ```
 
 Training is not part of CI — it needs the dataset (`dvc pull`) and meaningful CPU/GPU time; CI only
-tests and ships the serving API against whatever model is already in `models/`.
+tests and ships the serving API against whatever model is already in `models/` or the MLflow
+Model Registry (see "Model versions" above).
 
 **Required GitHub Secrets:**
-- `DOCKERHUB_USERNAME`
-- `DOCKERHUB_TOKEN`
-- `GROQ_API_KEY`
+- `DOCKER_USERNAME`, `DOCKER_PASSWORD` — Docker Hub login for the build-and-push job
+- `GROQ_API_KEY` — passed through to the test job (tests mock the chat service, so this can be
+  any value, but the app itself needs a real key to run)
+- `EC2_HOST`, `EC2_USER`, `EC2_SSH_KEY` — SSH access for the deploy job
 
 ---
 

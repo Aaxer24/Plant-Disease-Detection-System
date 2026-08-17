@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: aaxer/plant-disease-api:latest
     container_name: plant-disease-api
     ports:
       - "8000:8000"
@@ -35,6 +36,7 @@ services:
     build:
       context: .
       dockerfile: app/Dockerfile
+    image: aaxer/plant-disease-frontend:latest
     container_name: plant-disease-frontend
     ports:
       - "8501:8501"

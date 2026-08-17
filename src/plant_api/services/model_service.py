@@ -21,8 +21,26 @@ class ModelService:
         self._load_model()
 
     def _load_model(self) -> None:
-        keras_path = os.path.join(self._settings.MODEL_DIR, f"{self._settings.MODEL_NAME}.keras")
+        """Try the MLflow Model Registry's "Production" version first, so a newly
+        promoted model is picked up without rebuilding/redeploying the image. Falls
+        back to the model file baked into the image if the registry is unreachable
+        or has no Production version yet.
+        """
+        try:
+            import mlflow.keras
 
+            mlflow.set_tracking_uri(self._settings.MLFLOW_TRACKING_URI)
+            model_uri = f"models:/{self._settings.MODEL_NAME}/Production"
+            self._keras_model = mlflow.keras.load_model(model_uri)
+            logger.info("Keras model loaded from MLflow registry: %s", model_uri)
+            return
+        except Exception:
+            logger.warning(
+                "Could not load model from MLflow registry, falling back to local file",
+                exc_info=True,
+            )
+
+        keras_path = os.path.join(self._settings.MODEL_DIR, f"{self._settings.MODEL_NAME}.keras")
         try:
             import tensorflow as tf
 
