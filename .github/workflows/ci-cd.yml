@@ -138,7 +138,8 @@ jobs:
           script: |
             set -e
             cd ~/app
-            git pull
+            git fetch origin main
+            git reset --hard origin/main
             sudo docker compose pull api frontend
             sudo docker compose up -d
             sudo docker image prune -f
