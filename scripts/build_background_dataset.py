@@ -79,7 +79,9 @@ def build(images_per_class: int = 120, seed: int = 123) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
-        "--images-per-class", type=int, default=120,
+        "--images-per-class",
+        type=int,
+        default=120,
         help="How many images to sample per imagenette source class (default: 120, ~1200 total)",
     )
     args = parser.parse_args()

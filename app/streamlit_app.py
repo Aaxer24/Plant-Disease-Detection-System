@@ -300,7 +300,10 @@ with st.sidebar:
         "🍅 **Tomato** — 9 diseases + Healthy"
     )
     st.markdown("---")
-    st.caption("38 disease classes + not-a-leaf rejection · MobileNetV2 transfer learning · MLflow-tracked model")
+    st.caption(
+        "38 disease classes + not-a-leaf rejection · MobileNetV2 transfer learning · "
+        "MLflow-tracked model"
+    )
 
 tab_detect, tab_chat = st.tabs(["🔍  Detect Disease", "💬  Ask the AI"])
 

@@ -34,8 +34,7 @@ def build_model(num_classes: int, image_size: int, channels: int = 3) -> tf.kera
 
 
 def unfreeze_top_layers(model: tf.keras.Model, num_layers: int) -> None:
-    """Unfreeze the top `num_layers` of the MobileNetV2 backbone for a fine-tuning phase.
-    """
+    """Unfreeze the top `num_layers` of the MobileNetV2 backbone for a fine-tuning phase."""
     base_model = next(layer for layer in model.layers if isinstance(layer, tf.keras.Model))
     base_model.trainable = True
     for layer in base_model.layers[:-num_layers]:
