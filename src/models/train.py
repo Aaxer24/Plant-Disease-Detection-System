@@ -19,7 +19,7 @@ import mlflow.keras
 import tensorflow as tf
 
 from src.data.preprocess import load_datasets
-from src.models.model import build_model
+from src.models.model import build_model, unfreeze_top_layers
 from src.utils.common import PROJECT_ROOT, get_class_names, get_logger, load_config, load_params
 
 logger = get_logger(__name__)
@@ -128,6 +128,57 @@ def run(param_overrides: dict | None = None) -> dict:
             callbacks=callbacks,
             verbose=1,
         )
+
+        # ---- Fine-tuning phase: unfreeze the top of the backbone and continue at a
+        # much lower learning rate. The frozen-backbone phase above only trains a
+        # small head on top of generic ImageNet features; this phase lets the later
+        # backbone layers adapt to this specific dataset, which is what actually
+        # improves accuracy on classes the frozen model confuses (e.g. visually
+        # similar early-stage diseases).
+        phase1_epochs_ran = len(history.history["loss"])
+        phase1_best_val_accuracy = max(history.history["val_accuracy"])
+        logger.info(
+            "Frozen-backbone phase done (%d epochs, best val_accuracy %.4f) — "
+            "starting fine-tuning phase",
+            phase1_epochs_ran,
+            phase1_best_val_accuracy,
+        )
+
+        unfreeze_top_layers(model, params["fine_tune_unfreeze_layers"])
+        model.compile(
+            optimizer=tf.keras.optimizers.Adam(learning_rate=params["fine_tune_learning_rate"]),
+            loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False),
+            metrics=["accuracy"],
+        )
+
+        fine_tune_callbacks = [
+            tf.keras.callbacks.EarlyStopping(
+                monitor="val_accuracy",
+                patience=params["fine_tune_early_stopping_patience"],
+                restore_best_weights=True,
+            ),
+            tf.keras.callbacks.ModelCheckpoint(
+                checkpoint_path,
+                monitor="val_accuracy",
+                save_best_only=True,
+                initial_value_threshold=phase1_best_val_accuracy,
+            ),
+            tf.keras.callbacks.TensorBoard(log_dir=tensorboard_dir),
+        ]
+        if mlflow_active:
+            fine_tune_callbacks.append(MlflowEpochLogger())
+
+        fine_tune_history = model.fit(
+            train_ds,
+            validation_data=val_ds,
+            epochs=phase1_epochs_ran + params["fine_tune_epochs"],
+            initial_epoch=phase1_epochs_ran,
+            callbacks=fine_tune_callbacks,
+            verbose=1,
+        )
+
+        for key, values in fine_tune_history.history.items():
+            history.history.setdefault(key, []).extend(values)
 
         logger.info("Evaluating on held-out test set")
         test_loss, test_accuracy = model.evaluate(test_ds, verbose=1)

@@ -1,11 +1,35 @@
 """
 Comprehensive knowledge base for 38 disease/healthy classes across 14 crops
 (apple, blueberry, cherry, corn, grape, orange, peach, pepper, potato,
-raspberry, soybean, squash, strawberry, tomato).
+raspberry, soybean, squash, strawberry, tomato), plus one Background/"not a
+leaf" class used to reject non-leaf photos instead of forcing a guess.
 Used as RAG context for the AI chatbot to give accurate farming advice.
 """
 
 PLANT_DISEASE_KNOWLEDGE = {
+    # ------------------------------------------------------------------ #
+    # Background (not a disease — open-set rejection class)
+    # ------------------------------------------------------------------ #
+    "Background___not_a_leaf": {
+        "disease_name": "Not a Plant Leaf",
+        "scientific_name": None,
+        "description": (
+            "The uploaded image doesn't look like a plant leaf, so no disease "
+            "prediction could be made for it. This can happen with photos of "
+            "people, hands, random objects, or scenes that aren't close-up "
+            "shots of a single leaf."
+        ),
+        "symptoms": [],
+        "causes": [],
+        "treatment": [
+            "Upload a clear, well-lit, close-up photo of a single plant leaf, "
+            "filling most of the frame, for an accurate diagnosis.",
+        ],
+        "prevention": [],
+        "recommended_pesticides": [],
+        "severity": "N/A",
+        "season": "N/A",
+    },
     # ------------------------------------------------------------------ #
     # Pepper
     # ------------------------------------------------------------------ #

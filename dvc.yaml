@@ -15,11 +15,8 @@ stages:
       - data/processed/val
       - data/processed/test
 
-  # NOTE: train/evaluate outs below are all `cache: false` — DVC still
-  # orchestrates the pipeline (knows when to re-run based on changed deps)
-  # but does not cache or version these files. MLflow owns experiment
-  # tracking and model versioning (see src/models/train.py); DVC's job here
-  # is data versioning only (data/raw/images.dvc, data/processed/* above).
+# cache: false — DVC only orchestrates this stage (reruns it when deps change);
+# it doesn't version these files. Model versioning is MLflow's job.
   train:
     cmd: python scripts/train.py
     deps:
@@ -37,9 +34,12 @@ stages:
       - train.learning_rate
       - train.early_stopping_patience
       - train.seed
+      - train.fine_tune_epochs
+      - train.fine_tune_learning_rate
+      - train.fine_tune_unfreeze_layers
+      - train.fine_tune_early_stopping_patience
     outs:
-      # NOTE: filename follows config.yaml's model_name (default plant_disease_model) —
-      # keep the two in sync if you rename it there.
+      # filename follows config.yaml's model_name (default plant_disease_model) — keep the two in sync if rename it there.
       - models/plant_disease_model.keras:
           cache: false
 

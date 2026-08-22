@@ -1,9 +1,5 @@
-# Canonical class list — single source of truth for both the training
-# pipeline (label order) and the serving API (display names).
-#
+# # Class names used by both training and the API. Keep the same order. Retraining is needed if changed.
 # Order matters: it matches sorted(os.listdir(data_dir)), which is the label
-# order Keras's image_dataset_from_directory assigns during training. Do not
-# reorder without retraining.
 classes:
   - name: Apple___Apple_scab
     display_name: Apple Scab
@@ -17,6 +13,9 @@ classes:
   - name: Apple___healthy
     display_name: Apple Healthy
     crop: Apple
+  - name: Background___not_a_leaf
+    display_name: Not a Leaf / Unrecognized
+    crop: Background
   - name: Blueberry___healthy
     display_name: Blueberry Healthy
     crop: Blueberry
@@ -121,14 +120,7 @@ classes:
     crop: Tomato
 
 # Serving / MLflow / model-file defaults (paths are relative to project root).
-#
-# mlflow_tracking_uri: assumes the shared MLflow server is reachable at
-# localhost:5000 (e.g. via `docker compose up`, which also runs the API and
-# frontend against the same server). Override with the MLFLOW_TRACKING_URI
-# env var if you're running training/serving somewhere that URL doesn't
-# resolve — both src/models/train.py and the API's Settings honor it. If the
-# server isn't reachable, MLflow tracking is disabled with a warning rather
-# than failing the run.
+# mlflow_tracking_uri: assumes the shared MLflow server is reachable at localhost:5000 (e.g. via `docker compose up`, which also runs the API and frontend against the same server). 
 model_dir: models
 model_name: plant_disease_model
 mlflow_tracking_uri: http://localhost:5000

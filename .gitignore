@@ -63,3 +63,5 @@ Thumbs.db
 
 # Personal reference docs, not part of the codebase
 docs/
+
+.ssh

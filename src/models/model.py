@@ -9,11 +9,6 @@ from src.data.preprocess import build_preprocessing_layers
 def build_model(num_classes: int, image_size: int, channels: int = 3) -> tf.keras.Model:
     """Build the classifier: a frozen, ImageNet-pretrained MobileNetV2 backbone with a
     small trainable classification head on top, over resize+rescale+augment layers.
-
-    The backbone is frozen (not fine-tuned) — it already knows general visual features
-    (edges, textures, shapes) from ImageNet, so only the small head needs training. This
-    converges in far fewer epochs than training a CNN from scratch, which matters here
-    since training runs on CPU.
     """
     resize_and_rescale, data_augmentation = build_preprocessing_layers(image_size)
     input_shape = (image_size, image_size, channels)
@@ -36,3 +31,12 @@ def build_model(num_classes: int, image_size: int, channels: int = 3) -> tf.kera
         ]
     )
     return model
+
+
+def unfreeze_top_layers(model: tf.keras.Model, num_layers: int) -> None:
+    """Unfreeze the top `num_layers` of the MobileNetV2 backbone for a fine-tuning phase.
+    """
+    base_model = next(layer for layer in model.layers if isinstance(layer, tf.keras.Model))
+    base_model.trainable = True
+    for layer in base_model.layers[:-num_layers]:
+        layer.trainable = False

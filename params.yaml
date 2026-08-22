@@ -1,6 +1,4 @@
-# Training hyperparameters, tracked by DVC (dvc.yaml stages reference these
-# via `params:`) so every pipeline run and its metrics are reproducible and
-# comparable (`dvc metrics diff`, `dvc exp show`).
+# Training hyperparameters, tracked by DVC so every pipeline run and its metrics are reproducible and comparable
 prepare:
   train_split: 0.8
   val_split: 0.1
@@ -15,3 +13,9 @@ train:
   learning_rate: 0.001
   early_stopping_patience: 8
   seed: 123
+
+  # Fine-tuning phase (runs after the frozen-backbone phase above): unfreezes the top N MobileNetV2 layers and continues training at a much lower learning rate to recover accuracy on classes the frozen backbone alone doesn't separate well.
+  fine_tune_epochs: 8
+  fine_tune_learning_rate: 0.00001
+  fine_tune_unfreeze_layers: 30
+  fine_tune_early_stopping_patience: 4

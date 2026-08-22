@@ -17,11 +17,7 @@ if "prediction" not in st.session_state:
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-# ── Design tokens ─────────────────────────────────────────────────────────
-# These MUST match .streamlit/config.toml's [theme] colors exactly — the app
-# pins an explicit dark theme rather than adapting to the visitor's OS/browser
-# preference, so every color here is chosen for THIS palette, not guessed.
-PRIMARY = "#22C55E"  # matches config.toml primaryColor
+# Design tokens
 ACCENT = "#4ADE80"  # brighter accent for text/highlights that need to pop on dark
 INK = "#E5E9F0"  # matches config.toml textColor
 MUTED = "#8B98B0"
@@ -304,7 +300,7 @@ with st.sidebar:
         "🍅 **Tomato** — 9 diseases + Healthy"
     )
     st.markdown("---")
-    st.caption("38 classes · MobileNetV2 transfer learning · MLflow-tracked model")
+    st.caption("38 disease classes + not-a-leaf rejection · MobileNetV2 transfer learning · MLflow-tracked model")
 
 tab_detect, tab_chat = st.tabs(["🔍  Detect Disease", "💬  Ask the AI"])
 
@@ -366,7 +362,7 @@ with tab_detect:
                 unsafe_allow_html=True,
             )
 
-            with st.expander("📊 Confidence across all 38 classes", expanded=False):
+            with st.expander("📊 Confidence across all 39 classes", expanded=False):
                 render_predictions_chart(result["all_predictions"])
 
             if info:

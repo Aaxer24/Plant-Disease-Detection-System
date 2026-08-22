@@ -35,7 +35,7 @@ run:
 	uvicorn src.plant_api.main:app --reload --host 0.0.0.0 --port 8000
 
 # ── Training pipeline (DVC-tracked — see dvc.yaml, params.yaml) ────────────
-# Run ONE of these at a time — never `dvc repro` from two shells simultaneously,
+# Run one of these at a time — never `dvc repro` from two shells simultaneously,
 # it will clear a stage's outputs mid-run out from under the other process.
 prepare-data:
 	python scripts/make_dataset.py
